@@ -1,8 +1,31 @@
-﻿<html>
+﻿<%#このあたりに何のページなのかを明記しておきましょう。htmlのコメントアウトタグは受け取り手に見えてしまうので注意。 %>
+<html>
 	<head>
 		<meta charset="shift-jis">
 	</head>
 	<body>
+		<header>
+			<div class="container">
+				<div class="header-left">
+					<a href="index.html" class="link-top">競技プログラミングをはじめよう！</a>
+				</div>
+				<div class="header-right">
+					<a href="rogin.html">ログイン</a>
+				</div>
+			</div>
+		</header>
 		<h1>とっぷ</h1>
+		<ol id = "timeline">
+			<%for i in 1..100%>
+				<li>
+					あのイーハトーヴォのすきとおった風、夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモリーオ市、郊外のぎらぎらひかる草の波。<br>
+				</li>
+			<%end%>
+		</ol>
+		<footer>
+			<address>tahara-yu5@g.ecc.u-tokyo.ac.jp</address>
+			<p>FindBG™ 2019</p>
+		</footer>
 	</body>
+	
 </html>
