@@ -1,8 +1,4 @@
 ﻿<h1>ログイン</h1>
-<% if flash[:error_message] %>
-	<div><%= flash[:error_message] %></div>
-<% end %>
-
 <%= form_tag "/user/signin", method: :post do %>
 	<%= label_tag "名前" %>
 	<%= text_field_tag :username %><br>

@@ -1,3 +1,8 @@
 ﻿<div id="title">とっぷ</div>
-<%= link_to 'ユーザー登録','/user/signup' %><br>
-<%= link_to 'サインイン','/user/signin' %><br>
+<% if session[:id] %>
+	<div><%= link_to 'マイページへ','/user/mypage/' + @user.id.to_s %></div>
+	<div><%= link_to 'ログアウト','/signout' %></div>
+<% else %>
+	<div><%= link_to 'サインイン','/user/signin' %></div><br>
+	<div><%= link_to 'ユーザー登録','/user/signup' %></div><br>
+<% end %>

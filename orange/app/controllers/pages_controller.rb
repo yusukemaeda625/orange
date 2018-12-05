@@ -1,9 +1,16 @@
 class PagesController < ApplicationController
 
 	def top
+		if session[:id]
+		@user = User.find(session[:id])
+		end
 	end
 
-	def signup		
+	def signup
+		if session[:id]
+			id = session[:id];
+			redirect_to "/user/mypage/#{id}"
+		end	
 	end
 
 	def signup_user
@@ -23,8 +30,17 @@ class PagesController < ApplicationController
 	end
 
 	def signin
+		if session[:id]
+			id = session[:id];
+			redirect_to "/user/mypage/#{id}"
+		end
 	end
-
+	
+	def signout
+		session[:id] = nil;
+		redirect_to "/"
+	end
+	
 	def signin_check
 		username = params[:username]
 		password = params[:password]
@@ -34,9 +50,13 @@ class PagesController < ApplicationController
 
 		if user
 			session[:id] = user.id;
-			redirect_to "/"
+			redirect_to "/user/mypage/#{user.id}"
 		else
 			redirect_to "/user/signin"
 		end
+	end
+
+	def mypage
+			@user = User.find(session[:id])
 	end
 end
