@@ -1,16 +1,12 @@
 ﻿<div>ユーザー登録</div>
-<% if session[:id] %>
-	<div>ログイン済みです</div>
-<% else %>
-	<%= form_tag "/user/signup", method: :post do %>
-		<%= label_tag "名前" %>
-		<%= text_field_tag :username %><br>
-		<%= label_tag "学校名" %>
-		<%= text_field_tag :schoolname %><br>
-		<%= label_tag "卒業年度" %>
-		<%= number_field_tag :graduate %><br>
-		<%= label_tag "パスワード" %>
-		<%= password_field_tag :password %><br>
-		<%= submit_tag"送信" %>
-	<% end %>
+<%= form_tag "/user/signup", method: :post do %>
+	<%= label_tag "名前" %>
+	<%= text_field_tag :username %><br>
+	<%= label_tag "学校名" %>
+	<%= text_field_tag :schoolname %><br>
+	<%= label_tag "卒業年度" %>
+	<%= number_field_tag :graduate %><br>
+	<%= label_tag "パスワード" %>
+	<%= password_field_tag :password %><br>
+	<%= submit_tag"送信" %>
 <% end %>
