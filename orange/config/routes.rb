@@ -10,4 +10,8 @@ Rails.application.routes.draw do
 
 	post"/user/signin", to:"pages#signin_check"
 
+	get "/user/mypage/:id", to:"pages#mypage"
+
+	get "signout", to:"pages#signout"
+
 end

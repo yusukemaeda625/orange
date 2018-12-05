@@ -1,0 +1,12 @@
+﻿<% path = request.fullpath %>
+<% if "/user/mypage/#{session[:id]}" == path %>
+	<div>マイページ</div>
+	<div>ユーザー名　<%= @user.name %> </div><br>
+	<div>学校名　<%= @user.schoolname %> </div><br>
+	<div>卒業年度　<%= @user.schoolname %> </div><br>
+	<div><%= link_to 'とっぷ','/' %></div></div>
+	<div><%= link_to 'ログアウト','/signout' %></div></div>
+<% else %>
+	<div>異なるユーザーのマイページにアクセスしようとしています</div>
+	<div><%= link_to 'マイページへ','/user/mypage/' + @user.id.to_s %></div>
+<% end %>
