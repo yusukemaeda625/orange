@@ -14,4 +14,9 @@ Rails.application.routes.draw do
 
 	get "signout", to:"pages#signout"
 
+	post "create_attributes", to:"pages#create_attributes"
+
+	post "add_lagerattributes", to:"pages#add_lagerattributes"
+
+	post "add_smallerattributes", to:"pages#add_smallerattributes"
 end
