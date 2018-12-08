@@ -3,9 +3,21 @@
 	<div>マイページ</div>
 	<div>ユーザー名　<%= @user.name %> </div><br>
 	<div>学校名　<%= @user.schoolname %> </div><br>
-	<div>卒業年度　<%= @user.schoolname %> </div><br>
+	<div>卒業年度　<%= @user.guraduate %> </div><br>
+	<% @user.uattributes.each do |attribute| %>
+		<div>属性<%= attribute.id %>: <%= attribute.name %> </div>
+	<% end %>
+
+	<div>自分の属性の大カテゴリー登録</div>
+	<%= form_tag "/add_attributes", method: :post do %>
+		<%= label_tag "属性名" %>
+		<%= collection_select :category, :name, @attributes, :id, :name %><br>
+		<%= submit_tag"追加" %>
+	<% end %>
+
 	<div><%= link_to 'とっぷ','/' %></div></div>
-	<div><%= link_to 'ログアウト','/signout' %></div></div>
+	<div><%= link_to 'ログアウト','/signout' %></div>
+
 <% else %>
 	<div>異なるユーザーのマイページにアクセスしようとしています</div>
 	<div><%= link_to 'マイページへ','/user/mypage/' + @user.id.to_s %></div>
