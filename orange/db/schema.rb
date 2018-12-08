@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181204140916) do
+ActiveRecord::Schema.define(version: 20181207170426) do
 
   create_table "attributes", force: :cascade do |t|
-    t.string "lagaercategory"
-    t.string "smallercategory"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "uattributes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_uattributes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

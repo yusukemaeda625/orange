@@ -13,10 +13,11 @@ Rails.application.routes.draw do
 	get "/user/mypage/:id", to:"pages#mypage"
 
 	get "signout", to:"pages#signout"
-
+	
+	get "/admin", to:"pages#admin"
+	
 	post "create_attributes", to:"pages#create_attributes"
 
-	post "add_lagerattributes", to:"pages#add_lagerattributes"
+	post "add_attributes", to:"pages#add_attributes"
 
-	post "add_smallerattributes", to:"pages#add_smallerattributes"
 end

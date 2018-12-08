@@ -1,0 +1,6 @@
+﻿<div id="title">管理者ページ</div>
+<%= form_tag "/create_attributes", method: :post do %>
+	<%= label_tag "大カテゴリ名" %>
+	<%= text_field_tag :l_category %><br>
+	<%= submit_tag"追加" %>
+<% end %>

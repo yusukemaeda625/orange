@@ -58,25 +58,38 @@ class PagesController < ApplicationController
 
 	def mypage
 		@user = User.find(session[:id])
-		@l_attributes = L_attribute.all
+		@attributes = Attribute.all
 	end
+	
 
-	def add_lagerattributes
-		@user = User.find(session[:id])
-		@u_attribute = @user.u_attributes
+	def add_attributes
+		name = params[:category_name]
+		user = User.find(session[:id])
+		
+		uattribute = Uattribute.new
+		uattribute.name = name
+		
+		uattribute.user = user
+		
+		uattribute.save
+		
+		id = session[:id];
+		redirect_to "/user/mypage/#{id}"
 
 	end
 
 	def create_attributes
-		lagercategory = params[:lagercategory]
-		smallercategory = params[:smallercategory]
+		l_category = params[:l_category]
 
-		attributes = Atribute.new
-		attribute.lagercategory = lagercategory
-		attribute.smallercategory = smallercategory
+		attribute = Attribute.new
+		attribute.name = l_category
+		
 		attribute.save
+		
+		redirect_to "/admin"
+	end
 
-		id = session[:id];
-		redirect_to "/user/mypage/#{id}"
+	
+	def admin
 	end
 end

@@ -3,37 +3,16 @@
 	<div>マイページ</div>
 	<div>ユーザー名　<%= @user.name %> </div><br>
 	<div>学校名　<%= @user.schoolname %> </div><br>
-	<div>卒業年度　<%= @user.schoolname %> </div><br>
-
-	<% @user.u_attributes.each do |u_attribute| %>
-		<div>属性<%= @user.u_attribute.id %>
-				大カテゴリー:<%= @user.u_attribute.lagercategory %>
-				<% if @user.u_attribute.smallercategory %>
-					小カテゴリー:<%= @user.u_attribute.smallercategory %>
-				<% else %>
-					<%= form_tag "add_smallerattributes", method: :post do %>
-						<%= select_tag "小カテゴリー" %>
-						<%= collection_select :smallercategory, @attributes, :id, :smallercategory %>
-						<%= submit_tag"追加" %>
-					<% end %>
-				<% end %>
-			</div>
+	<div>卒業年度　<%= @user.guraduate %> </div><br>
+	<% @user.uattributes.each do |attribute| %>
+		<div>属性<%= attribute.id %>: <%= attribute.name %> </div>
 	<% end %>
 
 	<div>自分の属性の大カテゴリー登録</div>
-	<%= form_tag "add_l_attributes", method: :post do %>
-		<%= select_tag "大カテゴリー" %>
-		<%= collection_select :lagercategory, @attributes, :id, :lagercategory %><br>
+	<%= form_tag "/add_attributes", method: :post do %>
+		<%= label_tag "属性名" %>
+		<%= collection_select :category, :name, @attributes, :id, :name %><br>
 		<%= submit_tag"追加" %>
-	<% end %>
-
-	<div>新規の属性の作成</div>
-	<%= form_tag "create_attributes", method: :post do %>
-		<%= select_tag "大カテゴリー" %>
-		<%= text_field_tag :lagercategory %><br>
-		<%= label_tag "小カテゴリー" %>
-		<%= text_field_tag :smallercategory %><br>
-		<%= submit_tag"作成" %>
 	<% end %>
 
 	<div><%= link_to 'とっぷ','/' %></div></div>
