@@ -63,8 +63,13 @@ class PagesController < ApplicationController
 	
 
 	def add_attributes
-		name = params[:category_name]
+		name = params[:attribute][:name]
 		user = User.find(session[:id])
+		
+		exists = Uattribute.where("name = ?",name)
+		exist = exists[0];
+		
+		if !exist
 		
 		uattribute = Uattribute.new
 		uattribute.name = name
@@ -73,9 +78,12 @@ class PagesController < ApplicationController
 		
 		uattribute.save
 		
+		else
+		
 		id = session[:id];
 		redirect_to "/user/mypage/#{id}"
-
+		
+		end
 	end
 
 	def create_attributes

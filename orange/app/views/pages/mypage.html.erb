@@ -11,7 +11,7 @@
 	<div>自分の属性の大カテゴリー登録</div>
 	<%= form_tag "/add_attributes", method: :post do %>
 		<%= label_tag "属性名" %>
-		<%= collection_select :category, :name, @attributes, :id, :name %><br>
+		<%= collection_select :attribute, :name, @attributes, :name, :name %><br>
 		<%= submit_tag"追加" %>
 	<% end %>
 
