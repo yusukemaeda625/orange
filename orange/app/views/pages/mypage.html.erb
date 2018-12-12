@@ -5,7 +5,8 @@
 	<div>学校名　<%= @user.schoolname %> </div><br>
 	<div>卒業年度　<%= @user.guraduate %> </div><br>
 	<% @user.uattributes.each do |attribute| %>
-		<div>属性<%= attribute.id %>: <%= attribute.name %> </div>
+		<div>属性: <%= attribute.name %> </div>
+		<%= link_to '削除','/delete_attributes/' + attribute.id.to_s %>
 	<% end %>
 
 	<div>自分の属性の大カテゴリー登録</div>
