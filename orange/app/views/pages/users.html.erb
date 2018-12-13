@@ -1,0 +1,18 @@
+﻿<div>名簿 <%= @user.schoolname %></div>
+<% if "/user/obog/#{session[:id]}" == path %>
+	<% @user.each do |user| %>
+		<div>ユーザー名　<%= @user.name %> </div><br>
+		<div>卒業年度　<%= @user.guraduate %> </div><br>
+		<% user.uattributes.each do |attribute| %>
+			<div>属性: <%= attribute.name %> </div>
+		<% end %>
+	<% end %>
+
+	<div><%= link_to 'とっぷ','/' %></div>
+	<div><%= link_to 'ログアウト','/signout' %></div>
+	<div><%= link_to 'マイページへ','/user/mypage/' + @user.id.to_s %></div>
+
+<% else %>
+	<div>異なる高校のOBOG名簿にアクセスしようとしています</div>
+	<div><%= link_to 'マイページへ','/user/mypage/' + @user.id.to_s %></div>
+<% end %>

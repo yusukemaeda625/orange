@@ -68,25 +68,32 @@ class PagesController < ApplicationController
 	def add_attributes
 		name = params[:attribute][:name]
 		user = User.find(session[:id])
-		
+
 		exists = Uattribute.where("name = ? and user_id = ?",name ,user.id )
 		exist = exists[0];
-		
+
 		if !exist
-		
+
 		uattribute = Uattribute.new
 		uattribute.name = name
-		
+
 		uattribute.user = user
-		
+
 		uattribute.save
-		
+
 		end
-		
+
 		id = session[:id];
 		redirect_to "/user/mypage/#{id}"
-		
-		
+	end
+
+	def obog
+			if session[:id]
+				@user = User.find(session[:id])
+				@users = User.where("schoolname" ,@user.schoolname)
+			else
+				redirect_to "/user/signin"
+			end
 	end
 
 	def create_attributes
@@ -94,23 +101,23 @@ class PagesController < ApplicationController
 
 		attribute = Attribute.new
 		attribute.name = l_category
-		
+
 		attribute.save
-		
+
 		redirect_to "/admin"
 	end
-	
+
 	def delete_attributes
 		user = User.find(session[:id])
 		exists = Uattribute.where("id = ? and user_id = ?",params[:id] ,user.id )
 		exist = exists[0];
-		
+
 		if exist
 			exist.destroy
 		end
 		redirect_to "/user/mypage/#{session[:id]}"
 	end
-	
+
 	def admin
 	end
 end
