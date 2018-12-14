@@ -10,14 +10,16 @@ Rails.application.routes.draw do
 
 	post"/user/signin", to:"pages#signin_check"
 
-	get "/user/mypage/:id", to:"pages#mypage"
+	get "/user/mypage", to:"pages#mypage"
 
 	get "signout", to:"pages#signout"
-	
+
 	get "/admin", to:"pages#admin"
-	
+
+	get "/user/obog", to:"pages#obog"
+
 	get "delete_attributes/:id", to:"pages#delete_attributes"
-	
+
 	post "create_attributes", to:"pages#create_attributes"
 
 	post "add_attributes", to:"pages#add_attributes"

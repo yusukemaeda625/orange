@@ -1,6 +1,6 @@
 ﻿<div id="title">とっぷ</div>
 <% if session[:id] %>
-	<div><%= link_to 'マイページへ','/user/mypage/' + @user.id.to_s %></div>
+	<div><%= link_to 'マイページへ','/user/mypage' %></div>
 	<div><%= link_to 'ログアウト','/signout' %></div>
 <% else %>
 	<div><%= link_to 'サインイン','/user/signin' %></div><br>
