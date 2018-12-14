@@ -9,7 +9,7 @@ class PagesController < ApplicationController
 	def signup
 		if session[:id]
 			id = session[:id];
-			redirect_to "/user/mypage/#{id}"
+			redirect_to "/user/mypage"
 		end
 	end
 
@@ -32,7 +32,7 @@ class PagesController < ApplicationController
 	def signin
 		if session[:id]
 			id = session[:id];
-			redirect_to "/user/mypage/#{id}"
+			redirect_to "/user/mypage"
 		end
 	end
 
@@ -50,7 +50,7 @@ class PagesController < ApplicationController
 
 		if user
 			session[:id] = user.id;
-			redirect_to "/user/mypage/#{user.id}"
+			redirect_to "/user/mypage"
 		else
 			redirect_to "/user/signin"
 		end
@@ -84,16 +84,16 @@ class PagesController < ApplicationController
 		end
 
 		id = session[:id];
-		redirect_to "/user/mypage/#{id}"
+		redirect_to "/user/mypage"
 	end
 
 	def obog
-			if session[:id]
-				@user = User.find(session[:id])
-				@users = User.where("schoolname" ,@user.schoolname)
-			else
-				redirect_to "/user/signin"
-			end
+		if session[:id]
+			@user = User.find(session[:id])
+			@users = User.where(schoolname: @user.schoolname)
+		else
+			redirect_to "/user/signin"
+		end
 	end
 
 	def create_attributes
@@ -115,7 +115,7 @@ class PagesController < ApplicationController
 		if exist
 			exist.destroy
 		end
-		redirect_to "/user/mypage/#{session[:id]}"
+		redirect_to "/user/mypage"
 	end
 
 	def admin
