@@ -1,0 +1,17 @@
+﻿<div>イベント一覧 <%= @user.schoolname %>　高校 </div>
+<% @events.each do |event| %>
+	<div>イベント名　<%= event.name %> </div><br>
+	<div>詳細　<%= event.content %> </div><br>
+	<div>開催日時　<%= event.date %> </div><br>
+	<div>参加者　　<%= event.eusers.count %>人/ <%= event.number %>人 </div><br>
+	<% event.eattributes.each do |attribute| %>
+		<div>属性: <%= attribute.name %> </div>
+	<% end %>
+	<%= link_to '参加','/participate/' + event.id.to_s %>
+	<%= link_to '参加取り消し','/participate_cancel/' + event.id.to_s %>
+<% end %>
+
+<div><%= link_to 'とっぷ','/' %></div>
+<div><%= link_to 'ログアウト','/signout' %></div>
+<div><%= link_to 'マイページへ','/user/mypage' %></div>
+
