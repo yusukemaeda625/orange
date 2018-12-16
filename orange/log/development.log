@@ -7002,3 +7002,272 @@ Processing by PagesController#mypage as HTML
 Completed 200 OK in 197ms (Views: 162.8ms | ActiveRecord: 2.0ms)
 
 
+Started GET "/user/signup" for 127.0.0.1 at 2018-12-16 15:43:57 +0900
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#signup as HTML
+  Rendering pages/signup.html.erb within layouts/application
+  Rendered pages/signup.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 306ms (Views: 270.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/user/signup" for 127.0.0.1 at 2018-12-16 15:45:38 +0900
+Processing by PagesController#signup_user as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QwwCvFvPKEJ1ce6QWjXrVDU623E95Y/ofO771iNUFtUhZ3Smd34+wQQeV2CYUdOFSBqecPNaJywSfNYsn/H1Qg==", "username"=>"とうだい", "schoolname"=>"東大", "graduate"=>"1970", "password"=>"[FILTERED]", "commit"=>"送信"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "password", "schoolname", "guraduate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "とうだい"], ["password", "todai"], ["schoolname", "東大"], ["guraduate", 1970], ["created_at", "2018-12-16 06:45:38.940308"], ["updated_at", "2018-12-16 06:45:38.940308"]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/signin
+Completed 302 Found in 28ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2018-12-16 15:45:38 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 141ms (Views: 112.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/user/signin" for 127.0.0.1 at 2018-12-16 15:45:52 +0900
+Processing by PagesController#signin_check as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yMDQp0O3PvrGyWbxGQiP9P7ADtG7qmqnm5imNvGHa3iqq6a9bwYoebem3wHbbLclg+BL0HUVwmP1CovMTSKI7w==", "username"=>"とうだい", "password"=>"[FILTERED]", "commit"=>"送信"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (name = 'とうだい' and password = 'todai')[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-16 15:45:52 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mAttribute Load (1.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (48.9ms)
+Completed 200 OK in 198ms (Views: 158.0ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/add_attributes" for 127.0.0.1 at 2018-12-16 15:46:06 +0900
+Processing by PagesController#add_attributes as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zQ98jN4kHWzqNgseySJhvLnmngCCUOl456HBuaB8gjuvZAqW8pUL75tZsu4LRlltxMbbAUzvQbyJM+xDHNlhrA==", "attribute"=>{"name"=>"社会"}, "commit"=>"追加"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE (name = '社会' and user_id = 9)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "uattributes" ("name", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["name", "社会"], ["created_at", "2018-12-16 06:46:06.952912"], ["updated_at", "2018-12-16 06:46:06.952912"], ["user_id", 9]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 24ms (ActiveRecord: 5.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-16 15:46:06 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (1.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 156ms (Views: 125.1ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/add_attributes" for 127.0.0.1 at 2018-12-16 15:46:11 +0900
+Processing by PagesController#add_attributes as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HHHGEGqBhPO90221oO6c202G+xcvnA53Rnj3oE7er7V+GrAKRjCScMy81EViiqQKMKa+FuEjprMo6tpa8ntMIg==", "attribute"=>{"name"=>"科学"}, "commit"=>"追加"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE (name = '科学' and user_id = 9)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "uattributes" ("name", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["name", "科学"], ["created_at", "2018-12-16 06:46:11.173479"], ["updated_at", "2018-12-16 06:46:11.173479"], ["user_id", 9]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 13ms (ActiveRecord: 5.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-16 15:46:11 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (1.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 152ms (Views: 121.3ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/add_attributes" for 127.0.0.1 at 2018-12-16 15:46:14 +0900
+Processing by PagesController#add_attributes as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bbJdFcT8POO9eMA8lvydRGEhDqBKnBs0x6JafSH5iHMP2SsP6E0qYMwXecxUmKWVHAFLoYQjs/CpMHeHnVxr5A==", "attribute"=>{"name"=>"てすと"}, "commit"=>"追加"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE (name = 'てすと' and user_id = 9)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "uattributes" ("name", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["name", "てすと"], ["created_at", "2018-12-16 06:46:15.000477"], ["updated_at", "2018-12-16 06:46:15.000477"], ["user_id", 9]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 11ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-16 15:46:15 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 154ms (Views: 123.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 15:48:27 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 162ms (Views: 118.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/obog" for 127.0.0.1 at 2018-12-16 15:48:31 +0900
+Processing by PagesController#obog as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/obog.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  Rendered pages/obog.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 149ms (Views: 117.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-16 15:48:36 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 183ms (Views: 135.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/obog" for 127.0.0.1 at 2018-12-16 15:48:38 +0900
+Processing by PagesController#obog as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/obog.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  Rendered pages/obog.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 147ms (Views: 117.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signout" for 127.0.0.1 at 2018-12-16 15:48:48 +0900
+Processing by PagesController#signout as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 15:48:48 +0900
+Processing by PagesController#top as HTML
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 144ms (Views: 115.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2018-12-16 15:48:50 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 142ms (Views: 112.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/user/signin" for 127.0.0.1 at 2018-12-16 15:48:52 +0900
+Processing by PagesController#signin_check as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KFwDbaEkUI09RZc5W2w1BOkZlsWBRPZC8Ec2bbdl2MGbfRBF2LxGc1n8xUbHv3uKYiZh7Eo0szZh27YDvBQ3HQ==", "username"=>"とうだい", "password"=>"[FILTERED]", "commit"=>"送信"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (name = 'とうだい' and password = 'todai')[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-16 15:48:52 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (1.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 150ms (Views: 117.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/delete_attributes/43" for 127.0.0.1 at 2018-12-16 16:28:02 +0900
+Processing by PagesController#delete_attributes as HTML
+  Parameters: {"id"=>"43"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE (id = '43' and user_id = 9)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "uattributes" WHERE "uattributes"."id" = ?[0m  [["id", 43]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 14ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-16 16:28:03 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mAttribute Load (1.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 147ms (Views: 116.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/delete_attributes/42" for 127.0.0.1 at 2018-12-16 16:28:04 +0900
+Processing by PagesController#delete_attributes as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE (id = '42' and user_id = 9)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "uattributes" WHERE "uattributes"."id" = ?[0m  [["id", 42]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 10ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-16 16:28:04 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mAttribute Load (1.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 146ms (Views: 113.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 16:41:14 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 209ms (Views: 180.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 16:42:19 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 149ms (Views: 117.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 16:44:43 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 186ms (Views: 155.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 16:46:35 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 155ms (Views: 123.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 16:47:00 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 154ms (Views: 122.4ms | ActiveRecord: 0.0ms)
+
+
