@@ -7,12 +7,30 @@
 	<%= link_to '削除','/delete_attributes/' + attribute.id.to_s %>
 <% end %>
 
+<div>イベント作成</div>
+<%= form_tag "/create_events", method: :post do %>
+	<%= label_tag "イベント名" %>
+	<%= text_field_tag :name %><br>
+	<%= label_tag "内容" %>
+	<%= text_area_tag :content %><br>
+	<%= label_tag "開始日時" %>
+	<%= datetime_select :event, :start_at %><br>
+	<%= label_tag "定員" %>
+	<%= number_field_tag :number %><br>
+	<%= label_tag "属性" %>
+	<%= collection_select :eattribute, :name, @attributes, :name, :name %><br>
+	<%= submit_tag"作成" %>
+<% end %>
+<br>
+<br>
 <div>自分の属性の大カテゴリー登録</div>
 <%= form_tag "/add_attributes", method: :post do %>
-	<%= label_tag "属性名" %>
+	<%= label_tag "属性" %>
 	<%= collection_select :attribute, :name, @attributes, :name, :name %><br>
 	<%= submit_tag"追加" %>
 <% end %>
+
+<div><%= link_to 'イベント一覧へ','/user/events' %></div>
 <div><%= link_to 'OBOG名簿',"/user/obog" %></div>
 <div><%= link_to 'とっぷ','/' %></div></div>
 <div><%= link_to 'ログアウト','/signout' %></div>
