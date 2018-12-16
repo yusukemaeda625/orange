@@ -28,14 +28,14 @@
 	<%= submit_tag"作成" %>
 <% end %>
 <br>
-<br>
+
 <div>自分の属性の大カテゴリー登録</div>
 <%= form_tag "/add_attributes", method: :post do %>
 	<%= label_tag "属性" %>
 	<%= collection_select :attribute, :name, @attributes, :name, :name %><br>
 	<%= submit_tag"追加" %>
 <% end %>
-
+<br>
 <div><%= link_to 'イベント一覧へ','/user/events' %></div>
 <div><%= link_to 'OBOG名簿',"/user/obog" %></div>
 <div><%= link_to 'とっぷ','/' %></div></div>
