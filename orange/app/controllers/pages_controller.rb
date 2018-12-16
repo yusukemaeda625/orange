@@ -59,6 +59,34 @@ class PagesController < ApplicationController
 			redirect_to "/user/signin"
 		end
 	end
+	
+	def participate
+		event = Event.find(params[:id])
+		exists = Euser.where("name = ? and event_id = ?",session[:id] ,params[:id] )
+		exist = exists[0];		
+	
+		if !exist
+		
+		euser = Euser.new
+		euser.name = session[:id]
+		euser.event = event
+		euser.save
+		
+		end
+		
+		redirect_to "/user/events"
+	end
+	
+	def participate_cancel
+		event = Event.find(params[:id])
+		exists = Euser.where("name = ? and event_id = ?",session[:id] ,params[:id] )
+		exist = exists[0];		
+	
+		if exist
+			exist.destroy
+		end
+		redirect_to "/user/events"
+	end
 
 	def events
 		if session[:id]
@@ -88,7 +116,6 @@ class PagesController < ApplicationController
 
 		end
 
-		id = session[:id];
 		redirect_to "/user/mypage"
 	end
 

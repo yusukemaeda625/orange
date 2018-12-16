@@ -21,6 +21,10 @@ Rails.application.routes.draw do
 	get "/user/obog", to:"pages#obog"
 
 	get "delete_attributes/:id", to:"pages#delete_attributes"
+	
+	get "participate/:id", to:"pages#participate"	
+	
+	get "participate_cancel/:id", to:"pages#participate_cancel"	
 
 	post "create_attributes", to:"pages#create_attributes"
 
