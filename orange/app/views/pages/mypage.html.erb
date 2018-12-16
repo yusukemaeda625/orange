@@ -7,6 +7,12 @@
 	<%= link_to '削除','/delete_attributes/' + attribute.id.to_s %>
 <% end %>
 
+<div>参加予定のイベント一覧</div>
+<% @eusers.each do |euser| %>
+	<div>イベント名: <%= euser.event.name %> </div>
+<% end %>
+<br>
+
 <div>イベント作成</div>
 <%= form_tag "/create_events", method: :post do %>
 	<%= label_tag "イベント名" %>

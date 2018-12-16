@@ -55,6 +55,8 @@ class PagesController < ApplicationController
 		if session[:id]
 			@user = User.find(session[:id])
 			@attributes = Attribute.all
+			@eusers = Euser.where(name: session[:id])
+			
 		else
 			redirect_to "/user/signin"
 		end
