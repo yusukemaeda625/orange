@@ -44,12 +44,6 @@ ActiveRecord::Schema.define(version: 20181216142432) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "u_s_attributes", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "uattributes", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false

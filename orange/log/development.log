@@ -7002,3 +7002,1838 @@ Processing by PagesController#mypage as HTML
 Completed 200 OK in 197ms (Views: 162.8ms | ActiveRecord: 2.0ms)
 
 
+Started GET "/user/signup" for 127.0.0.1 at 2018-12-16 15:43:57 +0900
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#signup as HTML
+  Rendering pages/signup.html.erb within layouts/application
+  Rendered pages/signup.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 306ms (Views: 270.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/user/signup" for 127.0.0.1 at 2018-12-16 15:45:38 +0900
+Processing by PagesController#signup_user as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QwwCvFvPKEJ1ce6QWjXrVDU623E95Y/ofO771iNUFtUhZ3Smd34+wQQeV2CYUdOFSBqecPNaJywSfNYsn/H1Qg==", "username"=>"とうだい", "schoolname"=>"東大", "graduate"=>"1970", "password"=>"[FILTERED]", "commit"=>"送信"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "password", "schoolname", "guraduate", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "とうだい"], ["password", "todai"], ["schoolname", "東大"], ["guraduate", 1970], ["created_at", "2018-12-16 06:45:38.940308"], ["updated_at", "2018-12-16 06:45:38.940308"]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/signin
+Completed 302 Found in 28ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2018-12-16 15:45:38 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 141ms (Views: 112.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/user/signin" for 127.0.0.1 at 2018-12-16 15:45:52 +0900
+Processing by PagesController#signin_check as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yMDQp0O3PvrGyWbxGQiP9P7ADtG7qmqnm5imNvGHa3iqq6a9bwYoebem3wHbbLclg+BL0HUVwmP1CovMTSKI7w==", "username"=>"とうだい", "password"=>"[FILTERED]", "commit"=>"送信"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (name = 'とうだい' and password = 'todai')[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-16 15:45:52 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mAttribute Load (1.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (48.9ms)
+Completed 200 OK in 198ms (Views: 158.0ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/add_attributes" for 127.0.0.1 at 2018-12-16 15:46:06 +0900
+Processing by PagesController#add_attributes as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zQ98jN4kHWzqNgseySJhvLnmngCCUOl456HBuaB8gjuvZAqW8pUL75tZsu4LRlltxMbbAUzvQbyJM+xDHNlhrA==", "attribute"=>{"name"=>"社会"}, "commit"=>"追加"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE (name = '社会' and user_id = 9)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "uattributes" ("name", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["name", "社会"], ["created_at", "2018-12-16 06:46:06.952912"], ["updated_at", "2018-12-16 06:46:06.952912"], ["user_id", 9]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 24ms (ActiveRecord: 5.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-16 15:46:06 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (1.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 156ms (Views: 125.1ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/add_attributes" for 127.0.0.1 at 2018-12-16 15:46:11 +0900
+Processing by PagesController#add_attributes as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HHHGEGqBhPO90221oO6c202G+xcvnA53Rnj3oE7er7V+GrAKRjCScMy81EViiqQKMKa+FuEjprMo6tpa8ntMIg==", "attribute"=>{"name"=>"科学"}, "commit"=>"追加"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE (name = '科学' and user_id = 9)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "uattributes" ("name", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["name", "科学"], ["created_at", "2018-12-16 06:46:11.173479"], ["updated_at", "2018-12-16 06:46:11.173479"], ["user_id", 9]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 13ms (ActiveRecord: 5.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-16 15:46:11 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (1.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 152ms (Views: 121.3ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/add_attributes" for 127.0.0.1 at 2018-12-16 15:46:14 +0900
+Processing by PagesController#add_attributes as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bbJdFcT8POO9eMA8lvydRGEhDqBKnBs0x6JafSH5iHMP2SsP6E0qYMwXecxUmKWVHAFLoYQjs/CpMHeHnVxr5A==", "attribute"=>{"name"=>"てすと"}, "commit"=>"追加"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE (name = 'てすと' and user_id = 9)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "uattributes" ("name", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["name", "てすと"], ["created_at", "2018-12-16 06:46:15.000477"], ["updated_at", "2018-12-16 06:46:15.000477"], ["user_id", 9]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 11ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-16 15:46:15 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 154ms (Views: 123.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 15:48:27 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 162ms (Views: 118.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/obog" for 127.0.0.1 at 2018-12-16 15:48:31 +0900
+Processing by PagesController#obog as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/obog.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  Rendered pages/obog.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 149ms (Views: 117.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-16 15:48:36 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 183ms (Views: 135.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/obog" for 127.0.0.1 at 2018-12-16 15:48:38 +0900
+Processing by PagesController#obog as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/obog.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  Rendered pages/obog.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 147ms (Views: 117.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signout" for 127.0.0.1 at 2018-12-16 15:48:48 +0900
+Processing by PagesController#signout as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 15:48:48 +0900
+Processing by PagesController#top as HTML
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 144ms (Views: 115.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2018-12-16 15:48:50 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 142ms (Views: 112.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/user/signin" for 127.0.0.1 at 2018-12-16 15:48:52 +0900
+Processing by PagesController#signin_check as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KFwDbaEkUI09RZc5W2w1BOkZlsWBRPZC8Ec2bbdl2MGbfRBF2LxGc1n8xUbHv3uKYiZh7Eo0szZh27YDvBQ3HQ==", "username"=>"とうだい", "password"=>"[FILTERED]", "commit"=>"送信"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (name = 'とうだい' and password = 'todai')[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-16 15:48:52 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (1.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 150ms (Views: 117.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/delete_attributes/43" for 127.0.0.1 at 2018-12-16 16:28:02 +0900
+Processing by PagesController#delete_attributes as HTML
+  Parameters: {"id"=>"43"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE (id = '43' and user_id = 9)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "uattributes" WHERE "uattributes"."id" = ?[0m  [["id", 43]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 14ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-16 16:28:03 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mAttribute Load (1.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 147ms (Views: 116.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/delete_attributes/42" for 127.0.0.1 at 2018-12-16 16:28:04 +0900
+Processing by PagesController#delete_attributes as HTML
+  Parameters: {"id"=>"42"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE (id = '42' and user_id = 9)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "uattributes" WHERE "uattributes"."id" = ?[0m  [["id", 42]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 10ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-16 16:28:04 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mAttribute Load (1.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 146ms (Views: 113.5ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 16:41:14 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 209ms (Views: 180.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 16:42:19 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 149ms (Views: 117.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 16:44:43 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 186ms (Views: 155.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 16:46:35 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 155ms (Views: 123.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 16:47:00 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 154ms (Views: 122.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 16:57:21 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 153ms (Views: 121.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 17:01:41 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 165ms (Views: 136.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 17:03:01 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 149ms (Views: 118.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 17:03:23 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 149ms (Views: 116.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 17:04:50 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 165ms (Views: 132.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 17:11:28 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (42.9ms)
+Completed 500 Internal Server Error in 156ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (The asset "yoshida.jpg" is not present in the asset pipeline.):
+    58: 				<tr>
+    59: 					<td class="owner">
+    60: 						
+    61: 							<p class="thumb"><%= image_tag("yoshida.jpg") %></p>
+    62: 
+    63: 							
+    64: 							<p><a href="/lodestone/character/54274/">吉田塁</a><br>
+  
+app/views/pages/top.html.erb:61:in `_app_views_pages_top_html_erb__732371746_90483696'
+Started GET "/" for 127.0.0.1 at 2018-12-16 17:12:04 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (35.9ms)
+Completed 500 Internal Server Error in 152ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (The asset "yoshida.jpg" is not present in the asset pipeline.):
+    58: 				<tr>
+    59: 					<td class="owner">
+    60: 						
+    61: 							<p class="thumb"><%= image_tag('yoshida.jpg') %></p>
+    62: 
+    63: 							
+    64: 							<p><a href="/lodestone/character/54274/">吉田塁</a><br>
+  
+app/views/pages/top.html.erb:61:in `_app_views_pages_top_html_erb__732371746_81389040'
+Started GET "/" for 127.0.0.1 at 2018-12-16 17:12:21 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (57.8ms)
+Completed 200 OK in 207ms (Views: 177.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 17:13:33 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 149ms (Views: 118.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 17:15:03 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 142ms (Views: 111.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 17:17:05 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 147ms (Views: 115.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 17:20:56 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 142ms (Views: 112.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 17:22:43 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 148ms (Views: 117.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 17:24:05 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 149ms (Views: 117.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-16 17:24:43 +0900
+Processing by PagesController#top as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 147ms (Views: 116.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-12-17 10:03:06 +0900
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.1.6.1) lib/active_record/migration.rb:576:in `check_pending!'
+activerecord (5.1.6.1) lib/active_record/migration.rb:553:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.6.1) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateEvents (20181216135451)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "events" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "content" text, "date" datetime, "number" integer, "schoolname" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181216135451"]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateEattributes (20181216135515)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "eattributes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181216135515"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateEusers (20181216135537)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "eusers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181216135537"]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddEventToEuser (20181216142406)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "eusers" ADD "event_id" integer[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "index_eusers_on_event_id" ON "eusers" ("event_id")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181216142406"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddEventToEattribute (20181216142432)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "eattributes" ADD "event_id" integer[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "index_eattributes_on_event_id" ON "eattributes" ("event_id")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181216142432"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_eattributes_on_event_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_eattributes_on_event_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_eusers_on_event_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_eusers_on_event_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_uattributes_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_uattributes_on_user_id' AND type='index'
+[0m
+Started GET "/" for 127.0.0.1 at 2018-12-17 10:04:54 +0900
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#top as HTML
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (285.2ms)
+Completed 200 OK in 473ms (Views: 438.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-17 10:05:40 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "9"]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (80.3ms)
+Completed 200 OK in 464ms (Views: 204.2ms | ActiveRecord: 5.0ms)
+
+
+Started POST "/create_events" for 127.0.0.1 at 2018-12-17 10:09:12 +0900
+Processing by PagesController#create_events as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3Kroy6jUfr0Le4kgn6/G/X3zAznrHrYqt/BF4SygVXqEpIUz3xa2GlH2asyfVkxwcVI/6iA762Cg044g7yO8TA==", "name"=>"webp", "content"=>"わーいわーい", "event"=>{"start_at(1i)"=>"2018", "start_at(2i)"=>"12", "start_at(3i)"=>"17", "start_at(4i)"=>"01", "start_at(5i)"=>"05"}, "number"=>"100", "eattribute"=>{"name"=>"科学"}, "commit"=>"作成"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "events" ("name", "content", "number", "schoolname", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "webp"], ["content", "わーいわーい"], ["number", 100], ["schoolname", "東大"], ["created_at", "2018-12-17 01:09:12.354589"], ["updated_at", "2018-12-17 01:09:12.354589"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "eattributes" ("name", "created_at", "updated_at", "event_id") VALUES (?, ?, ?, ?)[0m  [["name", "科学"], ["created_at", "2018-12-17 01:09:12.371544"], ["updated_at", "2018-12-17 01:09:12.371544"], ["event_id", 1]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 44ms (ActiveRecord: 14.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-17 10:09:12 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "9"]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 154ms (Views: 124.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:09:23 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 149ms (Views: 118.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:15:03 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 151ms (Views: 120.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:16:56 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 149ms (Views: 118.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:23:37 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 157ms (Views: 124.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/participate/1" for 127.0.0.1 at 2018-12-17 10:34:10 +0900
+Processing by PagesController#participate as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 9 and event_id = '1')[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "eusers" ("name", "created_at", "updated_at", "event_id") VALUES (?, ?, ?, ?)[0m  [["name", "9"], ["created_at", "2018-12-17 01:34:10.986427"], ["updated_at", "2018-12-17 01:34:10.986427"], ["event_id", 1]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 17ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:34:11 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 143ms (Views: 114.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/participate/1" for 127.0.0.1 at 2018-12-17 10:34:38 +0900
+Processing by PagesController#participate as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEuser Load (1.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 9 and event_id = '1')[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 3ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:34:38 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 148ms (Views: 119.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/participate_cancel/1" for 127.0.0.1 at 2018-12-17 10:34:42 +0900
+Processing by PagesController#participate_cancel as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 9 and event_id = '1')[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "eusers" WHERE "eusers"."id" = ?[0m  [["id", 1]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 10ms (ActiveRecord: 5.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:34:42 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 146ms (Views: 116.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/participate_cancel/1" for 127.0.0.1 at 2018-12-17 10:34:43 +0900
+Processing by PagesController#participate_cancel as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 9 and event_id = '1')[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:34:43 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 146ms (Views: 117.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/participate_cancel/1" for 127.0.0.1 at 2018-12-17 10:34:44 +0900
+Processing by PagesController#participate_cancel as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 9 and event_id = '1')[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:34:44 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 143ms (Views: 115.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/participate/1" for 127.0.0.1 at 2018-12-17 10:34:45 +0900
+Processing by PagesController#participate as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 9 and event_id = '1')[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "eusers" ("name", "created_at", "updated_at", "event_id") VALUES (?, ?, ?, ?)[0m  [["name", "9"], ["created_at", "2018-12-17 01:34:45.124340"], ["updated_at", "2018-12-17 01:34:45.124340"], ["event_id", 1]]
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 11ms (ActiveRecord: 6.4ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:34:45 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 144ms (Views: 113.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/participate/1" for 127.0.0.1 at 2018-12-17 10:34:45 +0900
+Processing by PagesController#participate as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEuser Load (1.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 9 and event_id = '1')[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 4ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:34:46 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 155ms (Views: 123.2ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/participate/1" for 127.0.0.1 at 2018-12-17 10:34:46 +0900
+Processing by PagesController#participate as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 9 and event_id = '1')[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:34:46 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 150ms (Views: 119.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/participate/1" for 127.0.0.1 at 2018-12-17 10:34:47 +0900
+Processing by PagesController#participate as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEuser Load (1.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 9 and event_id = '1')[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 2ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:34:47 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 149ms (Views: 118.8ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/participate/1" for 127.0.0.1 at 2018-12-17 10:34:47 +0900
+Processing by PagesController#participate as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 9 and event_id = '1')[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:34:47 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 149ms (Views: 116.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/participate/1" for 127.0.0.1 at 2018-12-17 10:34:48 +0900
+Processing by PagesController#participate as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 9 and event_id = '1')[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:34:48 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 149ms (Views: 115.5ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/participate/1" for 127.0.0.1 at 2018-12-17 10:34:49 +0900
+Processing by PagesController#participate as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 9 and event_id = '1')[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:34:49 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 147ms (Views: 117.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/participate/1" for 127.0.0.1 at 2018-12-17 10:34:49 +0900
+Processing by PagesController#participate as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 9 and event_id = '1')[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:34:49 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 148ms (Views: 118.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:40:30 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 150ms (Views: 116.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:41:37 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 146ms (Views: 115.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:43:13 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 153ms (Views: 121.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:43:39 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 149ms (Views: 116.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:44:09 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 147ms (Views: 116.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 10:44:36 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 151ms (Views: 118.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 12:52:11 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 189ms (Views: 144.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 12:56:49 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (268.3ms)
+Completed 500 Internal Server Error in 384ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `event' for #<#<Class:0x3d971a8>:0xaf7abb8>
+Did you mean?  @events):
+    26: 	<div class="event_window_inner_header"><div class="event_window_inner_footer"><div class="event_window_inner_body">
+    27: 		<!-- title -->
+    28: 		<div class="event_title">
+    29: 			<h2><a href="/lodestone/character/54274/event/35646/"><%= event.name %></a></h2>
+    30: 			<p class="time">開催日時：<span><span class="datetime" data-epoch="1544943600" data-format="YMDHM">2018/12/18 10:25</span></span> ～ <span><span class="datetime" data-epoch="1544947200" data-target_epoch="1544943600" data-format="YMDHM_HM">17:00</span></span>	
+    31: 			</p>
+    32: 		</div>
+  
+app/views/pages/events.html.erb:29:in `_app_views_pages_events_html_erb___451214804_92002560'
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 12:57:37 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (34.9ms)
+Completed 500 Internal Server Error in 150ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `name' for nil:NilClass):
+    26: 	<div class="event_window_inner_header"><div class="event_window_inner_footer"><div class="event_window_inner_body">
+    27: 		<!-- title -->
+    28: 		<div class="event_title">
+    29: 			<h2><a href="/lodestone/character/54274/event/35646/"><%= @event.name %></a></h2>
+    30: 			<p class="time">開催日時：<span><span class="datetime" data-epoch="1544943600" data-format="YMDHM">2018/12/18 10:25</span></span> ～ <span><span class="datetime" data-epoch="1544947200" data-target_epoch="1544943600" data-format="YMDHM_HM">17:00</span></span>	
+    31: 			</p>
+    32: 		</div>
+  
+app/views/pages/events.html.erb:29:in `_app_views_pages_events_html_erb___451214804_58490004'
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 12:58:47 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 155ms (Views: 123.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 12:59:04 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 152ms (Views: 119.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 13:01:47 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (224.4ms)
+Completed 500 Internal Server Error in 337ms (ActiveRecord: 3.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `attribute' for #<#<Class:0x3d971a8>:0xa384ae8>):
+    36: 		<!-- tag -->
+    37: 		<div class="tag_header"><div class="tag_footer"><div class="tag_body">
+    38: 			分類：
+    39: 				<a href="https://jp.finalfantasyxiv.com/lodestone/event/?tag=%E5%91%8A%E7%9F%A5">[<%= attribute.name %>]</a>
+    40: 			
+    41: 		</div></div></div>
+    42: 		<!-- //tag -->
+  
+app/views/pages/events.html.erb:39:in `block in _app_views_pages_events_html_erb___451214804_85731480'
+app/views/pages/events.html.erb:16:in `_app_views_pages_events_html_erb___451214804_85731480'
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 13:03:47 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 158ms (Views: 125.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 13:07:45 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 154ms (Views: 121.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 13:08:42 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 152ms (Views: 121.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 13:10:17 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 157ms (Views: 124.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 13:18:33 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  Rendered pages/events.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 157ms (Views: 127.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-17 13:20:14 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "9"]]
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 156ms (Views: 126.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-17 13:21:10 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "9"]]
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAttribute Load (1.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 155ms (Views: 123.2ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/create_events" for 127.0.0.1 at 2018-12-17 13:21:31 +0900
+Processing by PagesController#create_events as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4tNyv1BNo47zyzYDP9l/O+A68w0QrXw7tXtm/fT6PHqAuASlfPy1DYKkj/P9vUfqnRq2DN4S1P/b6UsHSF/f7Q==", "name"=>"チイチイ", "content"=>"パッパ", "event"=>{"start_at(1i)"=>"2019", "start_at(2i)"=>"12", "start_at(3i)"=>"17", "start_at(4i)"=>"04", "start_at(5i)"=>"21"}, "number"=>"500", "eattribute"=>{"name"=>"てすと"}, "commit"=>"作成"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "events" ("name", "content", "number", "schoolname", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "チイチイ"], ["content", "パッパ"], ["number", 500], ["schoolname", "東大"], ["created_at", "2018-12-17 04:21:31.930522"], ["updated_at", "2018-12-17 04:21:31.930522"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "eattributes" ("name", "created_at", "updated_at", "event_id") VALUES (?, ?, ?, ?)[0m  [["name", "てすと"], ["created_at", "2018-12-17 04:21:31.939496"], ["updated_at", "2018-12-17 04:21:31.939496"], ["event_id", 2]]
+  [1m[35m (5.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 20ms (ActiveRecord: 9.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-17 13:21:31 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "9"]]
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 180ms (Views: 150.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 13:21:33 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  Rendered pages/events.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 150ms (Views: 121.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 13:24:07 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  Rendered pages/events.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 164ms (Views: 128.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/participate/2" for 127.0.0.1 at 2018-12-17 13:24:13 +0900
+Processing by PagesController#participate as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 9 and event_id = '2')[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "eusers" ("name", "created_at", "updated_at", "event_id") VALUES (?, ?, ?, ?)[0m  [["name", "9"], ["created_at", "2018-12-17 04:24:14.017925"], ["updated_at", "2018-12-17 04:24:14.017925"], ["event_id", 2]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 13ms (ActiveRecord: 5.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 13:24:14 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  Rendered pages/events.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 156ms (Views: 121.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/participate_cancel/2" for 127.0.0.1 at 2018-12-17 13:24:15 +0900
+Processing by PagesController#participate_cancel as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 9 and event_id = '2')[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "eusers" WHERE "eusers"."id" = ?[0m  [["id", 3]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 10ms (ActiveRecord: 4.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 13:24:15 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  Rendered pages/events.html.erb within layouts/application (11.9ms)
+Completed 200 OK in 158ms (Views: 125.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/participate_cancel/1" for 127.0.0.1 at 2018-12-17 13:24:18 +0900
+Processing by PagesController#participate_cancel as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 9 and event_id = '1')[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[31mDELETE FROM "eusers" WHERE "eusers"."id" = ?[0m  [["id", 2]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 9ms (ActiveRecord: 5.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 13:24:18 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  Rendered pages/events.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 155ms (Views: 122.9ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 13:26:57 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  Rendered pages/events.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 163ms (Views: 127.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 13:30:42 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  Rendered pages/events.html.erb within layouts/application (31.9ms)
+Completed 200 OK in 371ms (Views: 150.9ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-17 13:34:23 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "9"]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (18.9ms)
+Completed 200 OK in 168ms (Views: 132.1ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/create_events" for 127.0.0.1 at 2018-12-17 13:34:54 +0900
+Processing by PagesController#create_events as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zKcl/JQON/9CQ2qszOzlS9csbXZy+E5bvAkV9vpn8HCUqUgE48z/WBjOiUDMFW/G241RpbndExGrKt43OeQZRg==", "name"=>"", "content"=>"わっしょいわっしょい\r\nハイパー", "event"=>{"start_at(1i)"=>"2018", "start_at(2i)"=>"12", "start_at(3i)"=>"17", "start_at(4i)"=>"04", "start_at(5i)"=>"34"}, "number"=>"20", "eattribute"=>{"name"=>"社会"}, "commit"=>"作成"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "events" ("name", "content", "number", "schoolname", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", ""], ["content", "わっしょいわっしょい\r\nハイパー"], ["number", 20], ["schoolname", "東大"], ["created_at", "2018-12-17 04:34:54.395558"], ["updated_at", "2018-12-17 04:34:54.395558"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "eattributes" ("name", "created_at", "updated_at", "event_id") VALUES (?, ?, ?, ?)[0m  [["name", "社会"], ["created_at", "2018-12-17 04:34:54.404505"], ["updated_at", "2018-12-17 04:34:54.404505"], ["event_id", 3]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 19ms (ActiveRecord: 10.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-17 13:34:54 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (1.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "9"]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 150ms (Views: 119.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 13:34:57 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  Rendered pages/events.html.erb within layouts/application (14.9ms)
+Completed 200 OK in 153ms (Views: 123.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 14:08:09 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  Rendered pages/events.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 164ms (Views: 128.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/user/list.js" for 127.0.0.1 at 2018-12-17 14:08:09 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/user/list.js"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 14:09:28 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  Rendered pages/events.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 162ms (Views: 130.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/list.js" for 127.0.0.1 at 2018-12-17 14:09:28 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/user/list.js"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 14:10:35 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  Rendered pages/events.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 159ms (Views: 128.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/list.js" for 127.0.0.1 at 2018-12-17 14:10:35 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/user/list.js"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 14:16:33 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  Rendered pages/events.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 162ms (Views: 126.7ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/user/list.js" for 127.0.0.1 at 2018-12-17 14:16:33 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/user/list.js"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 14:25:19 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  Rendered pages/events.html.erb within layouts/application (29.9ms)
+Completed 500 Internal Server Error in 148ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (String can't be coerced into Fixnum):
+    12: <% i=1 %>
+    13: <% @events.each do |event| %>
+    14: <% i++ %>
+    15: <tr><td class="born" style="font-size:0pt;"><%= i %></td><td class="name">
+    16: 
+    17: <div class="event_window_body">
+    18: 	<div class="event_status clearfix">
+  
+app/views/pages/events.html.erb:15:in `+'
+app/views/pages/events.html.erb:15:in `block in _app_views_pages_events_html_erb___451214804_97626168'
+app/views/pages/events.html.erb:13:in `_app_views_pages_events_html_erb___451214804_97626168'
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 14:28:48 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  Rendered pages/events.html.erb within layouts/application (29.9ms)
+Completed 500 Internal Server Error in 144ms (ActiveRecord: 2.0ms)
+
+
+  
+ActionView::Template::Error (String can't be coerced into Fixnum):
+    24: 	<div class="event_window_inner_header"><div class="event_window_inner_footer"><div class="event_window_inner_body">
+    25: 		<!-- title -->
+    26: 		<div class="event_title">
+    27: 			<h2><a href="/lodestone/character/54274/event/35646/"><%= event.name %></a></h2>
+    28: 			<p class="time">開催日時：<%= event.date %>
+    29: 			</p>
+    30: 		</div>
+  
+app/views/pages/events.html.erb:27:in `+'
+app/views/pages/events.html.erb:27:in `block in _app_views_pages_events_html_erb___451214804_80984340'
+app/views/pages/events.html.erb:13:in `_app_views_pages_events_html_erb___451214804_80984340'
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 14:29:19 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  Rendered pages/events.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 156ms (Views: 124.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/user/list.js" for 127.0.0.1 at 2018-12-17 14:29:20 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/user/list.js"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 14:31:01 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  Rendered pages/events.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 155ms (Views: 123.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/list.js" for 127.0.0.1 at 2018-12-17 14:31:01 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/user/list.js"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 14:31:16 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  Rendered pages/events.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 156ms (Views: 122.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/user/list.js" for 127.0.0.1 at 2018-12-17 14:31:16 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/user/list.js"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 14:32:08 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  Rendered pages/events.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 156ms (Views: 120.9ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/user/list.js" for 127.0.0.1 at 2018-12-17 14:32:08 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/user/list.js"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/user/events" for 127.0.0.1 at 2018-12-17 14:32:57 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "東大"]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 1]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 2]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 3]]
+  Rendered pages/events.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 158ms (Views: 123.4ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/user/list.js" for 127.0.0.1 at 2018-12-17 14:32:57 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/user/list.js"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
