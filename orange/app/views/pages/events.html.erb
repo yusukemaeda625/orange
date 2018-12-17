@@ -1,9 +1,16 @@
 ﻿<div>イベント一覧 <%= @user.schoolname %>　高校 </div>
 
 <!-- ここからイベント -->
+<div id="users">
+  <input class="search" placeholder="Search" />
+  <button class="sort" data-sort="name">
+    Sort by name
+  </button>
+
 <table border="1" bordercolor="#333333">
+<tbody class="list">
 <% @events.each do |event| %>
-<tr><td>
+<tr><td class="born" style="font-size:0pt; display:none;">19671106</td><td class="name">
 
 <div class="event_window_body">
 	<div class="event_status clearfix">
@@ -98,10 +105,24 @@
 
 </td></tr>
 <% end %>
+</tbody>
 </table>
+
+</div>
 <!-- イベントテーブルおわり -->
 
 <div><%= link_to 'とっぷ','/' %></div>
 <div><%= link_to 'ログアウト','/signout' %></div>
 <div><%= link_to 'マイページへ','/user/mypage' %></div>
 
+
+<%# ここからスクリプト。あんまりいじんないでね %>
+
+<script src="list.js"></script>
+<script>
+var options = {
+  valueNames: [ 'name', 'born']
+};
+
+var userList = new List('users', options);
+</script>
