@@ -1,0 +1,1 @@
+javascriptのlist.jsはjavascriptのプラグイン。コードそのものではないことに注意。
