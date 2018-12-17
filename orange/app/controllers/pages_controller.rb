@@ -1,14 +1,10 @@
 class PagesController < ApplicationController
 
 	def top
-		if session[:id]
-		@user = User.find(session[:id])
-		end
 	end
 
 	def signup
 		if session[:id]
-			id = session[:id];
 			redirect_to "/user/mypage"
 		end
 	end
@@ -31,7 +27,6 @@ class PagesController < ApplicationController
 
 	def signin
 		if session[:id]
-			id = session[:id];
 			redirect_to "/user/mypage"
 		end
 	end
@@ -60,11 +55,51 @@ class PagesController < ApplicationController
 		if session[:id]
 			@user = User.find(session[:id])
 			@attributes = Attribute.all
+			@eusers = Euser.where(name: session[:id])
+			
 		else
 			redirect_to "/user/signin"
 		end
 	end
+	
+	def participate
+		event = Event.find(params[:id])
+		exists = Euser.where("name = ? and event_id = ?",session[:id] ,params[:id] )
+		exist = exists[0];		
+	
+		if !exist
+		
+		euser = Euser.new
+		euser.name = session[:id]
+		euser.event = event
+		euser.save
+		
+		end
+		
+		redirect_to "/user/events"
+	end
+	
+	def participate_cancel
+		event = Event.find(params[:id])
+		exists = Euser.where("name = ? and event_id = ?",session[:id] ,params[:id] )
+		exist = exists[0];		
+	
+		if exist
+			exist.destroy
+		end
+		redirect_to "/user/events"
+	end
 
+	def events
+		if session[:id]
+			@user = User.find(session[:id])
+			@events = Event.where(schoolname: @user.schoolname)
+		else
+			redirect_to "/user/signin"		
+		end
+	end
+
+	
 	def add_attributes
 		name = params[:attribute][:name]
 		user = User.find(session[:id])
@@ -83,7 +118,6 @@ class PagesController < ApplicationController
 
 		end
 
-		id = session[:id];
 		redirect_to "/user/mypage"
 	end
 
@@ -115,6 +149,30 @@ class PagesController < ApplicationController
 		if exist
 			exist.destroy
 		end
+		redirect_to "/user/mypage"
+	end
+	
+	def create_events
+		user = User.find(session[:id])
+		name = params[:name]
+		content = params[:content]
+		date = params[:event][:start_at]
+		number = params[:number]
+		attribute = params[:eattribute][:name]
+		
+		event = Event.new
+		event.name = name
+		event.content = content
+		event.date = date
+		event.number = number
+		event.schoolname = user.schoolname
+		event.save
+		
+		eattribute = Eattribute.new
+		eattribute.name = attribute
+		eattribute.event = event		
+		eattribute.save
+
 		redirect_to "/user/mypage"
 	end
 
