@@ -1,15 +1,105 @@
 ﻿<div>イベント一覧 <%= @user.schoolname %>　高校 </div>
+
+<!-- ここからイベント -->
+<table border="1" bordercolor="#333333">
 <% @events.each do |event| %>
-	<div>イベント名　<%= event.name %> </div><br>
-	<div>詳細　<%= event.content %> </div><br>
-	<div>開催日時　<%= event.date %> </div><br>
-	<div>参加者　　<%= event.eusers.count %>人/ <%= event.number %>人 </div><br>
-	<% event.eattributes.each do |attribute| %>
-		<div>属性: <%= attribute.name %> </div>
-	<% end %>
-	<%= link_to '参加','/participate/' + event.id.to_s %>
-	<%= link_to '参加取り消し','/participate_cancel/' + event.id.to_s %>
+<tr><td>
+
+<div class="event_window_body">
+	<div class="event_status clearfix">
+				<div class="event_status-offer"><img src="https://img.finalfantasyxiv.com/lds/h/j/P38W1lSpq_ni67HwFp5QdK1Xz0.png" width="180" height="20" alt="募集中"></div>
+			<p class="comment"><a href="/lodestone/character/54274/event/35646/#comment">0</a></p>
+		
+	</div>
+	
+	<div class="event_window_inner_header"><div class="event_window_inner_footer"><div class="event_window_inner_body">
+		<!-- title -->
+		<div class="event_title">
+			<h2><a href="/lodestone/character/54274/event/35646/"><%= event.name %></a></h2>
+			<p class="time">開催日時：<%= event.date %>
+			</p>
+		</div>
+		<!-- //title -->
+
+		<!-- tag -->
+		<div class="tag_body">
+			分類：
+			<% event.eattributes.each do |attribute| %>
+			<a href="https://jp.finalfantasyxiv.com/lodestone/event/?tag=%E5%91%8A%E7%9F%A5">[<%= attribute.name %>]</a>
+			<% end %>
+		</div>
+		<!-- //tag -->
+
+		
+			<!-- information -->
+			<div class="event_data">
+				<table border="1" bordercolor="#333333">
+				<tbody><tr>
+					<th class="event_data-owner-th">イベントオーナー</th>
+					<th class="event_data-setting-th" colspan="2">詳細</th>
+					<th class="event_data-participation-th" colspan="2">参加締切日時</th>
+				</tr>
+				<tr>
+					<td class="owner">
+						<p class="thumb"><%= image_tag('yoshida.jpg') %></p>
+						<p><a href="/lodestone/character/54274/">##############</a><br>
+						(##############)</p>
+					</td>
+					<td colspan="2">
+						<%= event.content %>
+					</td>
+					<td colspan="2">
+						############
+					</td>
+				</tr>
+				<tr>
+					<th>参加人数 / 定員</th>
+					<th>費用負担</th>
+					<th>場所</th>
+					<th>当日参加</th>
+					<th>連絡方法</th>
+				</tr>
+				<tr class="ja">
+					<td>
+						<p><%= event.eusers.count %>人/ <%= event.number %>人
+						( 残り<%= event.number - event.eusers.count %>人 )</p>
+					</td>
+					<td>
+						###############
+					</td>
+					<td>
+						##############
+					</td>
+					<td>
+						#############
+					</td>
+					<td>
+						#############
+					</td>
+				</tr>
+				</tbody></table>
+			</div>
+			<!-- //information -->
+		
+
+		<div class="clearfix">
+			<p class="date-make">作成日：<span>#################</span></p>
+			<p class="language">JA</p>
+		</div>
+
+	</div></div></div>
+
+	<div class="btn-event_links">
+		<%= link_to '参加','/participate/' + event.id.to_s %>
+		<%= link_to '参加取り消し','/participate_cancel/' + event.id.to_s %>
+	</div>
+
+</div>
+
+</td></tr>
 <% end %>
+</table>
+<!-- イベントテーブルおわり -->
 
 <div><%= link_to 'とっぷ','/' %></div>
 <div><%= link_to 'ログアウト','/signout' %></div>
