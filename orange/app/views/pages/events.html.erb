@@ -1,8 +1,17 @@
-﻿<div>イベント一覧 <%= @user.schoolname %>　高校 </div>
+﻿<head>
+<script>
+function tag(){
+ target = document.getElementById("nyuryoku");
+ target.setAttribute("value","[科学]"); 
+};
+</script>
+</head>
+
+<div>イベント一覧 <%= @user.schoolname %>　高校 </div>
 
 <!-- ここからイベント -->
 <div id="users">
-  <input class="search" placeholder="Search" />
+  <input class="search" id="nyuryoku" placeholder="Search" />
   <button class="sort" data-sort="name">
     Sort by name
   </button>
@@ -32,7 +41,7 @@
 		<div class="tag_body">
 			分類：
 			<% event.eattributes.each do |attribute| %>
-			<a href="https://jp.finalfantasyxiv.com/lodestone/event/?tag=%E5%91%8A%E7%9F%A5">[<%= attribute.name %>]</a>
+			<div onclick="tag();">[<%= attribute.name %>]</div>
 			<% end %>
 		</div>
 		<!-- //tag -->
