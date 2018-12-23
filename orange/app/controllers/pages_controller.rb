@@ -14,16 +14,20 @@ class PagesController < ApplicationController
 		password = params[:password]
 		graduate = params[:graduate]
 		schoolname = params[:schoolname]
+		phone = params[:phone]
+		email = params[:email]
 
 		user = User.new
  		user.name = username
 		user.password = password
 		user.guraduate = graduate
 		user.schoolname = schoolname
+		user.email = email
+		user.phone = phone
 		user.save
 
 		redirect_to "/user/signin"
-	end
+	end	
 
 	def signin
 		if session[:id]
@@ -49,6 +53,32 @@ class PagesController < ApplicationController
 		else
 			redirect_to "/user/signin"
 		end
+	end
+	
+	def edit_profile
+		@user = User.find(session[:id])
+	end
+
+	def update_profile
+		username = params[:username]
+		password = params[:password]
+		graduate = params[:graduate]
+		schoolname = params[:schoolname]
+		phone = params[:phone]
+		email = params[:email]
+		profile = params[:profile]
+
+		user = User.find(session[:id])
+ 		user.name = username
+		user.password = password
+		user.guraduate = graduate
+		user.schoolname = schoolname
+		user.email = email
+		user.phone = phone
+		user.profile = profile
+		user.save
+
+		redirect_to "/user/signin"
 	end
 
 	def mypage
@@ -159,6 +189,8 @@ class PagesController < ApplicationController
 		date = params[:event][:start_at]
 		number = params[:number]
 		attribute = params[:eattribute][:name]
+		place = params[:place]
+		fee = params[:fee]
 		
 		event = Event.new
 		event.name = name
@@ -166,12 +198,22 @@ class PagesController < ApplicationController
 		event.date = date
 		event.number = number
 		event.schoolname = user.schoolname
+		event.place = place
+		event.fee = fee
+		event.ownerid = session[:id]
 		event.save
 		
 		eattribute = Eattribute.new
 		eattribute.name = attribute
 		eattribute.event = event		
 		eattribute.save
+		
+		evowner = Evowner.new
+		evowner.name = user.name
+		evowner.phone = user.phone
+		evowner.email = user.email
+		evowner.event = event	
+		evowner.save
 
 		redirect_to "/user/mypage"
 	end

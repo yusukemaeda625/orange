@@ -1,10 +1,17 @@
-﻿<div>名簿 <%= @user.schoolname %></div>
+﻿<div>名簿 <%= @user.schoolname %></div><br>
 <% @users.each do |user| %>
-	<div>ユーザー名　<%= user.name %> </div><br>
-	<div>卒業年度　<%= user.guraduate %> </div><br>
+	<div>ユーザー名　<%= user.name %> </div>
+	<div>卒業年度　<%= user.guraduate %> </div>
+	<div>emailアドレス　<%= user.email %> </div>		
+	<div>電話番号 <%= user.phone %> </div>
+	<% if user.profile %>
+		<div>プロフィール　<%= user.profile %> </div>
+	<% else %>
+		<div>プロフィール未設定</div>
+	<% end %>		
 	<% user.uattributes.each do |attribute| %>
 		<div>属性: <%= attribute.name %> </div>
-	<% end %>
+	<% end %><br>
 <% end %>
 
 <div><%= link_to 'とっぷ','/' %></div>
