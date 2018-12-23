@@ -19,6 +19,10 @@ Rails.application.routes.draw do
 	get "/admin", to:"pages#admin"
 
 	get "/user/obog", to:"pages#obog"
+	
+	get "/user/edit/profile", to:"pages#edit_profile"
+	
+	post "/user/edit/profile", to:"pages#update_profile"
 
 	get "delete_attributes/:id", to:"pages#delete_attributes"
 	
