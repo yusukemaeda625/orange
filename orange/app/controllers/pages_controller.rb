@@ -189,6 +189,8 @@ class PagesController < ApplicationController
 		date = params[:event][:start_at]
 		number = params[:number]
 		attribute = params[:eattribute][:name]
+		place = params[:place]
+		fee = params[:fee]
 		
 		event = Event.new
 		event.name = name
@@ -196,12 +198,22 @@ class PagesController < ApplicationController
 		event.date = date
 		event.number = number
 		event.schoolname = user.schoolname
+		event.place = place
+		event.fee = fee
+		event.ownerid = session[:id]
 		event.save
 		
 		eattribute = Eattribute.new
 		eattribute.name = attribute
 		eattribute.event = event		
 		eattribute.save
+		
+		evowner = Evowner.new
+		evowner.name = user.name
+		evowner.phone = user.phone
+		evowner.email = user.email
+		evowner.event = event	
+		evowner.save
 
 		redirect_to "/user/mypage"
 	end

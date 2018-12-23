@@ -14,15 +14,13 @@
 
 <div class="event_window_body">
 	<div class="event_status clearfix">
-				<div class="event_status-offer"><img src="https://img.finalfantasyxiv.com/lds/h/j/P38W1lSpq_ni67HwFp5QdK1Xz0.png" width="180" height="20" alt="募集中"></div>
-			<p class="comment"><a href="/lodestone/character/54274/event/35646/#comment">0</a></p>
-		
+		<div class="event_status-offer"><img src="https://img.finalfantasyxiv.com/lds/h/j/P38W1lSpq_ni67HwFp5QdK1Xz0.png" width="180" height="20" alt="募集中"></div>		
 	</div>
 	
 	<div class="event_window_inner_header"><div class="event_window_inner_footer"><div class="event_window_inner_body">
 		<!-- title -->
 		<div class="event_title">
-			<h2><a href="/lodestone/character/54274/event/35646/"><%= event.name %></a></h2>
+			<h2><%= event.name %></a></h2>
 			<p class="time">開催日時：<%= event.date %>
 			</p>
 		</div>
@@ -32,7 +30,7 @@
 		<div class="tag_body">
 			分類：
 			<% event.eattributes.each do |attribute| %>
-			<a href="https://jp.finalfantasyxiv.com/lodestone/event/?tag=%E5%91%8A%E7%9F%A5">[<%= attribute.name %>]</a>
+				[<%= attribute.name %>]
 			<% end %>
 		</div>
 		<!-- //tag -->
@@ -49,8 +47,9 @@
 				<tr>
 					<td class="owner">
 						<p class="thumb"><%= image_tag('yoshida.jpg') %></p>
-						<p><a href="/lodestone/character/54274/">##############</a><br>
-						(##############)</p>
+						<% if event.evowners[0] %>
+							<p><%= event.evowners[0].name %></p>
+						<% end %>
 					</td>
 					<td colspan="2">
 						<%= event.content %>
@@ -63,8 +62,7 @@
 					<th>参加人数 / 定員</th>
 					<th>費用負担</th>
 					<th>場所</th>
-					<th>当日参加</th>
-					<th>連絡方法</th>
+					<th>問い合わせ先</th>
 				</tr>
 				<tr class="ja">
 					<td>
@@ -72,16 +70,16 @@
 						( 残り<%= event.number - event.eusers.count %>人 )</p>
 					</td>
 					<td>
-						###############
+						<%= event.fee %>
 					</td>
 					<td>
-						##############
+						<%= event.place %>
 					</td>
 					<td>
-						#############
-					</td>
-					<td>
-						#############
+						<% if event.evowners[0] %>					
+							<%= event.evowners[0].phone %><br>
+							<%= event.evowners[0].email %>
+						<% end %>
 					</td>
 				</tr>
 				</tbody></table>
@@ -90,8 +88,7 @@
 		
 
 		<div class="clearfix">
-			<p class="date-make">作成日：<span>#################</span></p>
-			<p class="language">JA</p>
+			<p class="date-make">作成日：<span><%= event.created_at %></span></p>
 		</div>
 
 	</div></div></div>

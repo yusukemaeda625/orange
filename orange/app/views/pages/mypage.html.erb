@@ -30,6 +30,10 @@
 	<%= text_area_tag :content %><br>
 	<%= label_tag "開始日時" %>
 	<%= datetime_select :event, :start_at %><br>
+	<%= label_tag "場所" %>
+	<%= text_area_tag :place %><br>
+	<%= label_tag "参加費" %>
+	<%= number_field_tag :fee, 0 %><br>	
 	<%= label_tag "定員" %>
 	<%= number_field_tag :number %><br>
 	<%= label_tag "属性" %>
