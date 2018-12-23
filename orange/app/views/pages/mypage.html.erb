@@ -1,7 +1,17 @@
-﻿<div>マイページ</div>
-<div>ユーザー名　<%= @user.name %> </div><br>
-<div>学校名　<%= @user.schoolname %> </div><br>
-<div>卒業年度　<%= @user.guraduate %> </div><br>
+﻿<div>マイページ</div><br>
+<div>ユーザー名　<%= @user.name %> </div>
+<div>学校名　<%= @user.schoolname %> </div>
+<div>卒業年度　<%= @user.guraduate %> </div>
+<div>emailアドレス　<%= @user.email %> </div>
+<div>電話番号　　<%= @user.phone %> </div>
+<% if @user.profile %>
+	<div>プロフィール　<%= @user.profile %> </div>
+<% else %>
+	<div>プロフィールを設定してください</div>
+<% end %>
+
+<div><%= link_to '編集','/user/edit/profile' %></div><br>
+
 <% @user.uattributes.each do |attribute| %>
 	<div>属性: <%= attribute.name %> </div>
 	<%= link_to '削除','/delete_attributes/' + attribute.id.to_s %>
@@ -12,7 +22,6 @@
 	<div>イベント名: <%= euser.event.name %> </div>
 <% end %>
 <br>
-
 <div>イベント作成</div>
 <%= form_tag "/create_events", method: :post do %>
 	<%= label_tag "イベント名" %>

@@ -8837,3 +8837,552 @@ puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
 puma (3.12.0) lib/puma/server.rb:472:in `process_client'
 puma (3.12.0) lib/puma/server.rb:332:in `block in run'
 puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddColumnsToUsers (20181223144249)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mALTER TABLE "users" ADD "email" varchar[0m
+  [1m[35m (0.0ms)[0m  [1m[35mALTER TABLE "users" ADD "phone" integer[0m
+  [1m[35m (0.0ms)[0m  [1m[35mALTER TABLE "users" ADD "profile" text[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181223144249"]]
+  [1m[35m (93.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (15.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_eattributes_on_event_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_eattributes_on_event_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_eusers_on_event_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_eusers_on_event_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_uattributes_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_uattributes_on_user_id' AND type='index'
+[0m
+Started GET "/" for 127.0.0.1 at 2018-12-24 00:39:00 +0900
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#top as HTML
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (156.6ms)
+Completed 200 OK in 312ms (Views: 284.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-24 00:39:14 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "3"]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (62.5ms)
+Completed 200 OK in 219ms (Views: 155.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/edit_profile" for 127.0.0.1 at 2018-12-24 00:39:17 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/user/edit_profile"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-24 00:39:49 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "3"]]
+  [1m[36mAttribute Load (1.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 144ms (Views: 118.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-24 00:39:54 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "3"]]
+  [1m[36mAttribute Load (1.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 144ms (Views: 117.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/edit/profile" for 127.0.0.1 at 2018-12-24 00:39:56 +0900
+Processing by PagesController#edit_profile as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/edit_profile.html.erb within layouts/application
+  Rendered pages/edit_profile.html.erb within layouts/application (16.2ms)
+Completed 500 Internal Server Error in 101ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `username' for #<User:0x8d66780>):
+    1: ﻿<div>編集する</div>
+    2: <%= form_tag "/user/edit/profile", method: :post do %>
+    3: 	<%= label_tag "名前" %>
+    4: 	<%= text_field_tag :username, @user.username %><br>
+    5: 	<%= label_tag "学校名" %>
+    6: 	<%= text_field_tag :schoolname, @user.schoolname %><br>
+    7: 	<%= label_tag "卒業年度" %>
+  
+app/views/pages/edit_profile.html.erb:4:in `block in _app_views_pages_edit_profile_html_erb__103883878_74133036'
+app/views/pages/edit_profile.html.erb:2:in `_app_views_pages_edit_profile_html_erb__103883878_74133036'
+Started GET "/user/edit/profile" for 127.0.0.1 at 2018-12-24 00:40:55 +0900
+Processing by PagesController#edit_profile as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/edit_profile.html.erb within layouts/application
+  Rendered pages/edit_profile.html.erb within layouts/application (29.9ms)
+Completed 500 Internal Server Error in 119ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `graduate' for #<User:0x99fa380>
+Did you mean?  guraduate
+               guraduate=
+               guraduate?):
+     5: 	<%= label_tag "学校名" %>
+     6: 	<%= text_field_tag :schoolname, @user.schoolname %><br>
+     7: 	<%= label_tag "卒業年度" %>
+     8: 	<%= number_field_tag :graduate, @user.graduate %><br>
+     9: 	<%= label_tag "emailアドレス" %>
+    10: 	<%= text_field_tag :email, @user.email %><br>	
+    11: 	<%= label_tag "電話番号" %>
+  
+app/views/pages/edit_profile.html.erb:8:in `block in _app_views_pages_edit_profile_html_erb__103883878_80724960'
+app/views/pages/edit_profile.html.erb:2:in `_app_views_pages_edit_profile_html_erb__103883878_80724960'
+Started GET "/user/edit/profile" for 127.0.0.1 at 2018-12-24 00:41:29 +0900
+Processing by PagesController#edit_profile as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/edit_profile.html.erb within layouts/application
+  Rendered pages/edit_profile.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 127ms (Views: 102.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/user/edit/profile" for 127.0.0.1 at 2018-12-24 00:41:50 +0900
+Processing by PagesController#update_profile as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PeuUwEI3McaXOWx5SwX2GYYmafWOrT2U7r63Sdo1NBbPzyDjX06InfvzOiho1rxQlyOf2g60HqLF4n/yMHLoQA==", "username"=>"youse", "schoolname"=>"灘", "graduate"=>"18", "email"=>"yousecome625@gmail.com", "phone"=>"08031192558", "profile"=>"よろしくお願いします", "commit"=>"送信"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveModel::RangeError (8031192558 is out of range for ActiveModel::Type::Integer with limit 4 bytes):
+  
+app/controllers/pages_controller.rb:79:in `update_profile'
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemovePhoneFromUsers (20181223154431)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TEMPORARY TABLE "ausers" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "password" varchar DEFAULT NULL, "schoolname" varchar DEFAULT NULL, "guraduate" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "email" varchar DEFAULT NULL, "phone" integer DEFAULT NULL, "profile" text DEFAULT NULL)[0m
+  [1m[35m (2.1ms)[0m  [1m[32mINSERT INTO "ausers" ("id","name","password","schoolname","guraduate","created_at","updated_at","email","phone","profile")
+                     SELECT "id","name","password","schoolname","guraduate","created_at","updated_at","email","phone","profile" FROM "users"[0m
+  [1m[35m (1.9ms)[0m  [1m[35mDROP TABLE "users"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "password" varchar DEFAULT NULL, "schoolname" varchar DEFAULT NULL, "guraduate" integer DEFAULT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "email" varchar DEFAULT NULL, "profile" text DEFAULT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "users" ("id","name","password","schoolname","guraduate","created_at","updated_at","email","profile")
+                     SELECT "id","name","password","schoolname","guraduate","created_at","updated_at","email","profile" FROM "ausers"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "ausers"[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181223154431"]]
+  [1m[35m (90.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_eattributes_on_event_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_eattributes_on_event_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_eusers_on_event_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_eusers_on_event_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_uattributes_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_uattributes_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddColumnToUsers (20181223154602)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mALTER TABLE "users" ADD "phone" varchar[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181223154602"]]
+  [1m[35m (93.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_eattributes_on_event_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_eattributes_on_event_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_eusers_on_event_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_eusers_on_event_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_uattributes_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_uattributes_on_user_id' AND type='index'
+[0m
+Started GET "/" for 127.0.0.1 at 2018-12-24 00:46:38 +0900
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#top as HTML
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (217.4ms)
+Completed 200 OK in 414ms (Views: 383.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-24 00:47:01 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "3"]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (60.2ms)
+Completed 200 OK in 212ms (Views: 157.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/user/edit/profile" for 127.0.0.1 at 2018-12-24 00:47:03 +0900
+Processing by PagesController#edit_profile as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/edit_profile.html.erb within layouts/application
+  Rendered pages/edit_profile.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 121ms (Views: 104.6ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/user/edit/profile" for 127.0.0.1 at 2018-12-24 00:47:18 +0900
+Processing by PagesController#update_profile as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Y2+mnJXoocWeIaPJZXNhjluvc0hTdPZfyndR02HAYMsvmgO6/h+nGXU11VCa25otdi7C4hgkIhjL9+AUayeUNQ==", "username"=>"youse", "schoolname"=>"灘", "graduate"=>"18", "email"=>"yousecome625@gmail.com", "phone"=>"08031192558", "profile"=>"qeqreqreｑ", "commit"=>"送信"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "schoolname", "guraduate", "created_at", "updated_at", "email", "profile", "phone") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "youse"], ["schoolname", "灘"], ["guraduate", 18], ["created_at", "2018-12-23 15:47:18.524387"], ["updated_at", "2018-12-23 15:47:18.524387"], ["email", "yousecome625@gmail.com"], ["profile", "qeqreqreｑ"], ["phone", "08031192558"]]
+  [1m[35m (95.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/signin
+Completed 302 Found in 101ms (ActiveRecord: 97.7ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2018-12-24 00:47:18 +0900
+Processing by PagesController#signin as HTML
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-24 00:47:18 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "3"]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 148ms (Views: 124.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-24 00:47:21 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (1.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "3"]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 164ms (Views: 138.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/edit/profile" for 127.0.0.1 at 2018-12-24 00:47:28 +0900
+Processing by PagesController#edit_profile as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/edit_profile.html.erb within layouts/application
+  Rendered pages/edit_profile.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 118ms (Views: 95.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/edit/profile" for 127.0.0.1 at 2018-12-24 00:47:58 +0900
+Processing by PagesController#edit_profile as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/edit_profile.html.erb within layouts/application
+  Rendered pages/edit_profile.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 144ms (Views: 104.8ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/user/edit/profile" for 127.0.0.1 at 2018-12-24 00:48:14 +0900
+Processing by PagesController#update_profile as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lKx60iTJtJWjkc/jJAexPcqwfjEe5cKJ22k37nJmG0NmiM7xObANzs9bmbIH1Pt027WIHp784b/wNf9VmCHHFQ==", "username"=>"youse", "schoolname"=>"灘", "graduate"=>"18", "email"=>"yousecome625@gmail.com", "phone"=>"08031192558", "profile"=>"よろしこ", "commit"=>"送信"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[33mUPDATE "users" SET "password" = ?, "email" = ?, "phone" = ?, "profile" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["password", nil], ["email", "yousecome625@gmail.com"], ["phone", "08031192558"], ["profile", "よろしこ"], ["updated_at", "2018-12-23 15:48:14.300848"], ["id", 3]]
+  [1m[35m (82.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/signin
+Completed 302 Found in 87ms (ActiveRecord: 83.7ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2018-12-24 00:48:14 +0900
+Processing by PagesController#signin as HTML
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-24 00:48:14 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "3"]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 145ms (Views: 113.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-24 00:48:56 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "3"]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 129ms (Views: 103.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-24 00:49:06 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "3"]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 132ms (Views: 106.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-24 00:49:24 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mEuser Load (1.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "3"]]
+  [1m[36mAttribute Load (1.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 131ms (Views: 102.9ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/add_attributes" for 127.0.0.1 at 2018-12-24 00:49:44 +0900
+Processing by PagesController#add_attributes as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QFKzaA3z2KL/IG2xxHKZFFuKx1t1IfjzM7u1Ujorr6qydgdLEIph+ZPqO+DnodNdSo8xdPU428UY533p0Gxz/A==", "attribute"=>{"name"=>"科学"}, "commit"=>"追加"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE (name = '科学' and user_id = 3)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "uattributes" ("name", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["name", "科学"], ["created_at", "2018-12-23 15:49:45.002027"], ["updated_at", "2018-12-23 15:49:45.002027"], ["user_id", 3]]
+  [1m[35m (73.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 91ms (ActiveRecord: 74.8ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-24 00:49:45 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "3"]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 129ms (Views: 103.0ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/add_attributes" for 127.0.0.1 at 2018-12-24 00:49:48 +0900
+Processing by PagesController#add_attributes as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"al96hYwL/tC8CAjeg06hjUgUzX2gWqjY6CfQX7mEPSmYe86mkXJHi9DCXo+gnevEWRE7UiBDi+7DexjkU8Phfw==", "attribute"=>{"name"=>"社会"}, "commit"=>"追加"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE (name = '社会' and user_id = 3)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "uattributes" ("name", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["name", "社会"], ["created_at", "2018-12-23 15:49:48.886534"], ["updated_at", "2018-12-23 15:49:48.886534"], ["user_id", 3]]
+  [1m[35m (79.9ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 86ms (ActiveRecord: 80.9ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-24 00:49:48 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "3"]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 130ms (Views: 103.5ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/add_attributes" for 127.0.0.1 at 2018-12-24 00:49:51 +0900
+Processing by PagesController#add_attributes as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0M42ktLtBN2VZ0083tPoA7bBOf6XPTn5trZcs2v6nssi6oKxz5S9hvmtG239AKJKp8TP0RckGs+d6pQIgb1CnQ==", "attribute"=>{"name"=>"てすと"}, "commit"=>"追加"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE (name = 'てすと' and user_id = 3)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "uattributes" ("name", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["name", "てすと"], ["created_at", "2018-12-23 15:49:51.736752"], ["updated_at", "2018-12-23 15:49:51.736752"], ["user_id", 3]]
+  [1m[35m (95.6ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 102ms (ActiveRecord: 96.6ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-24 00:49:51 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "3"]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 130ms (Views: 105.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/obog" for 127.0.0.1 at 2018-12-24 00:49:55 +0900
+Processing by PagesController#obog as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/obog.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."schoolname" = ?[0m  [["schoolname", "灘"]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 10]]
+  Rendered pages/obog.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 110ms (Views: 96.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/obog" for 127.0.0.1 at 2018-12-24 00:50:30 +0900
+Processing by PagesController#obog as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/obog.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."schoolname" = ?[0m  [["schoolname", "灘"]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 10]]
+  Rendered pages/obog.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 130ms (Views: 103.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/obog" for 127.0.0.1 at 2018-12-24 00:50:43 +0900
+Processing by PagesController#obog as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/obog.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."schoolname" = ?[0m  [["schoolname", "灘"]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mUattribute Load (1.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 10]]
+  Rendered pages/obog.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 131ms (Views: 105.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/obog" for 127.0.0.1 at 2018-12-24 00:50:55 +0900
+Processing by PagesController#obog as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/obog.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."schoolname" = ?[0m  [["schoolname", "灘"]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 10]]
+  Rendered pages/obog.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 129ms (Views: 104.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/obog" for 127.0.0.1 at 2018-12-24 00:52:22 +0900
+Processing by PagesController#obog as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/obog.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."schoolname" = ?[0m  [["schoolname", "灘"]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mUattribute Load (1.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 10]]
+  Rendered pages/obog.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 133ms (Views: 107.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/obog" for 127.0.0.1 at 2018-12-24 00:52:40 +0900
+Processing by PagesController#obog as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/obog.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."schoolname" = ?[0m  [["schoolname", "灘"]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 10]]
+  Rendered pages/obog.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 135ms (Views: 109.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/obog" for 127.0.0.1 at 2018-12-24 00:52:53 +0900
+Processing by PagesController#obog as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering pages/obog.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."schoolname" = ?[0m  [["schoolname", "灘"]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[36mUattribute Load (1.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 3]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 10]]
+  Rendered pages/obog.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 131ms (Views: 106.1ms | ActiveRecord: 1.0ms)
+
+

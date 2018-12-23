@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181216142432) do
+ActiveRecord::Schema.define(version: 20181223154602) do
 
   create_table "attributes", force: :cascade do |t|
     t.string "name"
@@ -59,6 +59,9 @@ ActiveRecord::Schema.define(version: 20181216142432) do
     t.integer "guraduate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
+    t.text "profile"
+    t.string "phone"
   end
 
 end
