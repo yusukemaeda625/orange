@@ -24,9 +24,11 @@ class PagesController < ApplicationController
 		user.schoolname = schoolname
 		user.email = email
 		user.phone = phone
-		user.save
-
-		redirect_to "/user/signin"
+		if user.save
+			redirect_to "/user/signin"
+		else
+			render action: :signup
+		end
 	end	
 
 	def signin
@@ -201,20 +203,20 @@ class PagesController < ApplicationController
 		event.place = place
 		event.fee = fee
 		event.ownerid = session[:id]
-		event.save
 		
-		eattribute = Eattribute.new
-		eattribute.name = attribute
-		eattribute.event = event		
-		eattribute.save
-		
-		evowner = Evowner.new
-		evowner.name = user.name
-		evowner.phone = user.phone
-		evowner.email = user.email
-		evowner.event = event	
-		evowner.save
+		if event.save
+			eattribute = Eattribute.new
+			eattribute.name = attribute
+			eattribute.event = event
+			eattribute.save
 
+			evowner = Evowner.new
+			evowner.name = user.name
+			evowner.phone = user.phone
+			evowner.email = user.email
+			evowner.event = event
+			evowner.save
+		end	
 		redirect_to "/user/mypage"
 	end
 
