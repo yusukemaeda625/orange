@@ -71,6 +71,7 @@ class PagesController < ApplicationController
 		profile = params[:profile]
 
 		user = User.find(session[:id])
+		password = user.password
  		user.name = username
 		user.password = password
 		user.guraduate = graduate
@@ -78,6 +79,7 @@ class PagesController < ApplicationController
 		user.email = email
 		user.phone = phone
 		user.profile = profile
+		user.password = password
 		user.save
 
 		redirect_to "/user/signin"
@@ -188,16 +190,16 @@ class PagesController < ApplicationController
 		user = User.find(session[:id])
 		name = params[:name]
 		content = params[:content]
-		date = params[:event][:start_at]
 		number = params[:number]
 		attribute = params[:eattribute][:name]
 		place = params[:place]
 		fee = params[:fee]
+		edate = Time.new(params[:period_to][:year],params[:period_to][:month],params[:period_to][:day],params[:period_to][:hour],params[:period_to][:minute])
 		
 		event = Event.new
 		event.name = name
 		event.content = content
-		event.date = date
+		event.date = edate
 		event.number = number
 		event.schoolname = user.schoolname
 		event.place = place

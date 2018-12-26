@@ -29,7 +29,7 @@
 	<%= label_tag "内容" %>
 	<%= text_area_tag :content %><br>
 	<%= label_tag "開始日時" %>
-	<%= datetime_select :event, :start_at %><br>
+	<%= select_datetime Date.current ,:prefix=>"period_to",:use_month_numbers => true %><br>
 	<%= label_tag "場所" %>
 	<%= text_area_tag :place %><br>
 	<%= label_tag "参加費" %>
