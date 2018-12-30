@@ -2917,3 +2917,198 @@ puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
 puma (3.12.0) lib/puma/server.rb:472:in `process_client'
 puma (3.12.0) lib/puma/server.rb:332:in `block in run'
 puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-12-31 02:15:08 +0900
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#top as HTML
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (169.5ms)
+Completed 200 OK in 343ms (Views: 318.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2018-12-31 02:15:21 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (16.8ms)
+Completed 200 OK in 110ms (Views: 99.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/user/signin" for 127.0.0.1 at 2018-12-31 02:15:22 +0900
+Processing by PagesController#signin_check as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7vCD730aBKg1TIW/ssL5qS6GndcuS0+IS4pEzwCU28LenWTGzR6+sXaMY3Q+Djkd+ThjluDzZFgn+QQ+a5CRwg==", "username"=>"あるとあああ", "password"=>"[FILTERED]", "commit"=>"送信"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (name = 'あるとあああ' and password = 'nwvknwvk')[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 42ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-31 02:15:23 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (1.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 13]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "13"]]
+  [1m[36mAttribute Load (1.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (141.7ms)
+Completed 200 OK in 294ms (Views: 247.4ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-31 02:15:25 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "生成アルゴリズムｇｔあ"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  Rendered pages/events.html.erb within layouts/application (46.9ms)
+Completed 200 OK in 169ms (Views: 146.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/list.js" for 127.0.0.1 at 2018-12-31 02:15:25 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/user/list.js"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/user/events" for 127.0.0.1 at 2018-12-31 02:15:44 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "生成アルゴリズムｇｔあ"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  Rendered pages/events.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 121ms (Views: 100.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/user/list.js" for 127.0.0.1 at 2018-12-31 02:15:44 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/user/list.js"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-12-31 02:16:09 +0900
+Processing by PagesController#top as HTML
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 99ms (Views: 91.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2018-12-31 02:16:11 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 13]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "13"]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  Rendered pages/mypage.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 99ms (Views: 92.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/obog" for 127.0.0.1 at 2018-12-31 02:16:13 +0900
+Processing by PagesController#obog as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/obog.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."schoolname" = ?[0m  [["schoolname", "生成アルゴリズムｇｔあ"]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 7]]
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 13]]
+  Rendered pages/obog.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 113ms (Views: 92.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2018-12-31 02:18:54 +0900
+Started GET "/user/list.js" for 127.0.0.1 at 2018-12-31 02:18:54 +0900
+Processing by PagesController#events as HTML
+  
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+ActionController::RoutingError (No route matches [GET] "/user/list.js"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "生成アルゴリズムｇｔあ"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  Rendered pages/events.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 143ms (Views: 121.4ms | ActiveRecord: 1.0ms)
+
+
