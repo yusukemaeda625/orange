@@ -1,9 +1,15 @@
-﻿<%= image_tag('title.png') %>
-<div id="title">とっぷ</div>
-<% if session[:id] %>
-	<div><%= link_to 'マイページへ','/user/mypage' %></div>
-	<div><%= link_to 'ログアウト','/signout' %></div>
-<% else %>
-	<div><%= link_to 'サインイン','/user/signin' %></div><br>
-	<div><%= link_to 'ユーザー登録','/user/signup' %></div><br>
-<% end %>
+﻿
+<div style=background-image: url( "<%= asset_path "ossan.png" %>" );>
+	<div style=text-align:center; class="container-fluid">
+		<%= image_tag('title.png', :class => "d-inline-flex p-4 justify-content-center") %>
+	</div>
+	<div style=text-align:center;>
+		<% if session[:id] %>
+			<div><%= link_to 'マイページへ','/user/mypage' %></div>
+			<div><%= link_to 'ログアウト','/signout' %></div>
+		<% else %>
+			<div><%= link_to 'サインイン','/user/signin' %></div><br>
+			<div><%= link_to 'ユーザー登録','/user/signup' %></div><br>
+		<% end %>
+	</div>
+</div>
