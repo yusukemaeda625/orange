@@ -101,25 +101,24 @@
 <div class="card border">
   <div class="card-body">
   <h4>イベント作成</h4>
-  <%= form_tag "/create_events", :method =>"post", :class => "form-horizontal" do %>
-  　　<div class="form-group">
+
+<%= form_tag "/create_events", method: :post, :class => "form-horizontal" do %>
 	<%= label_tag "イベント名" %>
-	<%= text_field_tag :name ,"", :class => "col-xl control-label" %><br><br>
+	<%= text_field_tag :name ,"", :class => "col-xl control-label" %><br>
 	<%= label_tag "内容" %>
-	<%= text_area_tag :content　,"", :class => "col-xl control-label" %><br>
-	<%= label_tag "開始日時" %> <br>
+	<%= text_area_tag :content ,"", :class => "col-xl control-label" %><br>
+	<%= label_tag "開始日時" %>
 	<%= select_datetime Date.current ,:prefix=>"period_to",:use_month_numbers => true %><br>
 	<%= label_tag "場所" %>
-	<%= text_area_tag :place　,"", :class => "col-xl control-label" %><br>
+	<%= text_area_tag :place ,"", :class => "col-xl control-label" %><br>
 	<%= label_tag "参加費" %>
-	<%= number_field_tag :fee,"", :class => "col-xl control-label" %><br><br>
+	<%= number_field_tag :fee ,"", :class => "col-xl control-label" %><br>	
 	<%= label_tag "定員" %>
-	<%= number_field_tag :number,"", :class => "col-xl control-label" %><br>
-	<%= label_tag "タグ" %>
-	<%= collection_select :attribute, :name, @attributes, :name, :name %>
-	</div>
-	<%= submit_tag"送信", :class => "btn btn-primary" %>
-	<% end %>
+	<%= number_field_tag :number ,"", :class => "col-xl control-label" %><br>
+	<%= label_tag "属性" %>
+	<%= collection_select :eattribute, :name, @attributes, :name, :name %><br>
+	<%= submit_tag"作成" %>
+<% end %>
 </div>
 </div><br>
 
