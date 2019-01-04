@@ -5,13 +5,13 @@
 </div></div></nav>
 
 <div class="container">
-<div class="card-header"><%= @user.schoolname %>の名簿</div>
+<div class="card-header"><%= @user.schoolname %>高校の名簿</div>
 
 <% @users.each do |user| %>
 <table class="table table-striped">
 	
-	<thead><tr><th>#</th><th>名前</th><th>卒業年度</th><th>属性</th><th>プロフィール</th></tr></thead>
-	<tbody><tr><th>1</th>
+	<thead><tr><th>名前</th><th>卒業年度</th><th>属性</th><th>プロフィール</th><th>連絡先</th></tr></thead>
+	<tbody><tr>
 	<td><%= user.name %></td>
 	<td><%= user.guraduate %></td>
 	<td><% user.uattributes.each do |attribute| %> <%= attribute.name %>,<% end %></td>
@@ -20,17 +20,14 @@
 			<%= user.profile %>
 		<% else %>
 			<div>未設定</div>
-		<% end %>	
-		<br>
-		email: <%= user.email %>
-		<br>	
-		電話番号: <%= user.phone %>
+		<% end %>
 	</td>
-	</tr><br></table>
-
-	
-	
-	
+	<td>
+		<%= user.email %><br>	
+		<%= user.phone %>
+	</td>
+	</td></tr><br>
+</table>
 	
 	
 <% end %>
