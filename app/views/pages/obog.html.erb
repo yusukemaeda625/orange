@@ -1,19 +1,39 @@
-﻿<div>名簿 <%= @user.schoolname %></div><br>
-<% @users.each do |user| %>
-	<div>ユーザー名　<%= user.name %> </div>
-	<div>卒業年度　<%= user.guraduate %> </div>
-	<div>emailアドレス　<%= user.email %> </div>		
-	<div>電話番号 <%= user.phone %> </div>
-	<% if user.profile %>
-		<div>プロフィール　<%= user.profile %> </div>
-	<% else %>
-		<div>プロフィール未設定</div>
-	<% end %>		
-	<% user.uattributes.each do |attribute| %>
-		<div>属性: <%= attribute.name %> </div>
-	<% end %><br>
-<% end %>
+﻿<nav class="navbar navbar-default">
+<div class="container-fluid">
+<div class="navbar-header">
+<a class="navbar-brand" href="#">OBOG名簿2.0</a>
+</div></div></nav>
 
-<div><%= link_to 'とっぷ','/' %></div>
-<div><%= link_to 'ログアウト','/signout' %></div>
-<div><%= link_to 'マイページへ','/user/mypage' %></div>
+<div class="container">
+<div class="card-header"><%= @user.schoolname %>高校の名簿</div>
+
+<% @users.each do |user| %>
+<table class="table table-striped">
+	
+	<thead><tr><th>名前</th><th>卒業年度</th><th>属性</th><th>プロフィール</th><th>連絡先</th></tr></thead>
+	<tbody><tr>
+	<td><%= user.name %></td>
+	<td><%= user.guraduate %></td>
+	<td><% user.uattributes.each do |attribute| %> <%= attribute.name %>,<% end %></td>
+	<td>
+		<% if user.profile %>
+			<%= user.profile %>
+		<% else %>
+			<div>未設定</div>
+		<% end %>
+	</td>
+	<td>
+		<%= user.email %><br>	
+		<%= user.phone %>
+	</td>
+	</td></tr><br>
+</table>
+	
+	
+<% end %>
+<div>
+	<%= link_to 'トップ画面へ','/' %>
+	<%= link_to 'ログアウト','/signout' %>
+	<%= link_to 'マイページへ','/user/mypage' %>
+</div>
+</div>

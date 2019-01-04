@@ -1,16 +1,33 @@
-﻿<div>ユーザー登録</div>
-<%= form_tag "/user/signup", method: :post do %>
-	<%= label_tag "名前" %>
-	<%= text_field_tag :username %><br>
-	<%= label_tag "学校名" %>
-	<%= text_field_tag :schoolname %><br>
-	<%= label_tag "卒業年度" %>
-	<%= number_field_tag :graduate %><br>
-	<%= label_tag "emailアドレス" %>
-	<%= text_field_tag :email %><br>	
-	<%= label_tag "電話番号" %>
-	<%= number_field_tag :phone %><br>	
-	<%= label_tag "パスワード" %>
-	<%= password_field_tag :password %><br>
-	<%= submit_tag"送信" %>
+﻿<nav class="navbar navbar-default">
+<div class="container-fluid">
+<div class="navbar-header">
+<a class="navbar-brand" href="#">OBOG名簿2.0</a>
+</div></div></nav>
+
+<div class="container">
+<div class="card-header">ユーザー登録</div>
+<div class="card-body">
+<div class="row">
+
+
+<%= form_tag "/user/signup", :method =>"post", :class => "form-horizontal" do %>
+	<div class="form-group">
+		<%= label_tag "名前" %>
+		<%= text_field_tag :username ,"", :class => "col-xl control-label" %><br>
+		<%= label_tag "学校名" %>
+		<%= text_field_tag :schoolname ,"", :class => "col-xl control-label" %><br>
+		<%= label_tag "卒業年度" %>
+		<%= number_field_tag :graduate ,"", :class => "col-xl control-label" %><br>
+		<%= label_tag "emailアドレス" %>
+		<%= text_field_tag :email ,"", :class => "col-xl control-label" %><br>	
+		<%= label_tag "電話番号" %>
+		<%= number_field_tag :phone ,"", :class => "col-xl control-label" %><br>	
+		<%= label_tag "パスワード" %>
+		<%= password_field_tag :password ,"", :class => "col-xl control-label" %><br>
+	</div>
+	<%= submit_tag"送信", :class => "btn btn-primary" %>
 <% end %>
+
+</div>
+</div>
+</div>
