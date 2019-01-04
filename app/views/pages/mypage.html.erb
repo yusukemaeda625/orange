@@ -1,55 +1,132 @@
-﻿<div>マイページ</div><br>
-<div>ユーザー名　<%= @user.name %> </div>
-<div>学校名　<%= @user.schoolname %> </div>
-<div>卒業年度　<%= @user.guraduate %> </div>
-<div>emailアドレス　<%= @user.email %> </div>
-<div>電話番号　　<%= @user.phone %> </div>
-<% if @user.profile %>
-	<div>プロフィール　<%= @user.profile %> </div>
-<% else %>
-	<div>プロフィールを設定してください</div>
+<html>
+  <head>
+    <title>Orange</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-param" content="authenticity_token" />
+    <meta name="csrf-token" content="bvyyrhuhMnE/OT8K8/vOCNdah2py43KqF6qNPwyfneec2AaNBtiLKlPzaVvQKIRBxl9xRfL6UZw89kWE5thBsQ==" />
+
+    <link rel="stylesheet" href="../bootstrap-4.2.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" media="all" href="/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/application.self-f0d704deea029cf000697e2c0181ec173a1b474645466ed843eb5ee7bb215794.css?body=1" data-turbolinks-track="reload" />
+    <script src="/assets/rails-ujs.self-8944eaf3f9a2615ce7c830a810ed630e296633063af8bb7441d5702fbe3ea597.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/turbolinks.self-569ee74eaa15c1e2019317ff770b8769b1ec033a0f572a485f64c82ddc8f989e.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/action_cable.self-69fddfcddf4fdef9828648f9330d6ce108b93b82b0b8d3affffc59a114853451.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/cable.self-8484513823f404ed0c0f039f75243bfdede7af7919dda65f2e66391252443ce9.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/list.self-81c018dd5ac04871c1f8a537a67efc45a66835fa32e8cc5a1417e84e874db664.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/application.self-eba3cb53a585a0960ade5a8cb94253892706bb20e3f12097a13463b1f12a4528.js?body=1" data-turbolinks-track="reload"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> -->
+          <!-- </button> -->
+          <!-- <img src="/assets/title-6acaa4c86dc76d9ea18e4231470b57d4f67e0211ef810afdab238a6dd4b45b0e.png" alt="Title" /> -->
+          <a class="navbar-brand" href="#">OBOG名簿2.0</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="card-header">マイページ</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+            <th>名前</th>
+            <th>学校名</th>
+            <th>卒業年度</th>
+			<th>連絡先</th>
+            <th>プロフィール</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= @user.name %></td>
+            <td><%= @user.schoolname %></td>
+            <td><%= @user.guraduate %></td>
+			<td><%= @user.email %><br><%= @user.phone %></td>
+			<td><% if @user.profile %>プロフィール　<%= @user.profile %><% else %>プロフィールを設定してください<% end %></td>			
+        </tr>
+
+</table>
+<div><%= link_to "編集","/user/edit/profile" %></div><br>
+<!-- <br> -->
+タグ:<% @user.uattributes.each do |attribute| %>
+	<%= attribute.name %>&nbsp;<%= link_to "×","/delete_attributes/" + attribute.id.to_s %>&ensp;&ensp;
 <% end %>
 
-<div><%= link_to '編集','/user/edit/profile' %></div><br>
 
-<% @user.uattributes.each do |attribute| %>
-	<div>属性: <%= attribute.name %> </div>
-	<%= link_to '削除','/delete_attributes/' + attribute.id.to_s %>
-<% end %>
+<div class="card-body"><h4>タグ追加登録</h4>
+<%= form_tag "/add_attributes", method: :post, :class => "form-horizontal" do %>
+	<%= collection_select :attribute, :name, @attributes, :name, :name %>
+	<%= submit_tag"追加", :class => "btn btn-primary" %>
+<% end %></div>
 
-<div>参加予定のイベント一覧</div>
-<% @eusers.each do |euser| %>
-	<div>イベント名: <%= euser.event.name %> </div>
-<% end %>
+<div class="card border">
+  <div class="card-body">
+    <h4>参加予定のイベント一覧</h4>
 <br>
-<div>イベント作成</div>
-<%= form_tag "/create_events", method: :post do %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>イベント</th>
+      <th>開催日</th>
+      <th>参加人数</th>
+      <th>説明</th>
+
+    </tr>
+</thead>
+<% @eusers.each do |euser| %>
+<tbody>
+    <tr>
+        <td><%= euser.event.name %></td>
+        <td><%= euser.event.date.month %>月<%= euser.event.date.day %>日</td>
+        <td><%= euser.event.eusers.count %></td>
+        <td><%= euser.event.eusers.count %></td>
+        <td><%= euser.event.content %></td>
+    </tr>
+</tbody>
+<% end %>
+</table>
+
+</div>
+</div><br><br>
+
+
+<div class="card border">
+  <div class="card-body">
+  <h4>イベント作成</h4>
+  <%= form_tag "/create_events", :method =>"post", :class => "form-horizontal" do %>
+  　　<div class="form-group">
 	<%= label_tag "イベント名" %>
-	<%= text_field_tag :name %><br>
+	<%= text_field_tag :name ,"", :class => "col-xl control-label" %><br><br>
 	<%= label_tag "内容" %>
-	<%= text_area_tag :content %><br>
-	<%= label_tag "開始日時" %>
+	<%= text_area_tag :content　,"", :class => "col-xl control-label" %><br>
+	<%= label_tag "開始日時" %> <br>
 	<%= select_datetime Date.current ,:prefix=>"period_to",:use_month_numbers => true %><br>
 	<%= label_tag "場所" %>
-	<%= text_area_tag :place %><br>
+	<%= text_area_tag :place　,"", :class => "col-xl control-label" %><br>
 	<%= label_tag "参加費" %>
-	<%= number_field_tag :fee, 0 %><br>	
+	<%= number_field_tag :fee,"", :class => "col-xl control-label" %><br><br>
 	<%= label_tag "定員" %>
-	<%= number_field_tag :number %><br>
-	<%= label_tag "属性" %>
-	<%= collection_select :eattribute, :name, @attributes, :name, :name %><br>
-	<%= submit_tag"作成" %>
-<% end %>
-<br>
+	<%= number_field_tag :number,"", :class => "col-xl control-label" %><br>
+	<%= label_tag "タグ" %>
+	<%= collection_select :attribute, :name, @attributes, :name, :name %>
+	</div>
+	<%= submit_tag"送信", :class => "btn btn-primary" %>
+	<% end %>
+</div>
+</div><br>
 
-<div>自分の属性の大カテゴリー登録</div>
-<%= form_tag "/add_attributes", method: :post do %>
-	<%= label_tag "属性" %>
-	<%= collection_select :attribute, :name, @attributes, :name, :name %><br>
-	<%= submit_tag"追加" %>
-<% end %>
-<br>
-<div><%= link_to 'イベント一覧へ','/user/events' %></div>
-<div><%= link_to 'OBOG名簿',"/user/obog" %></div>
-<div><%= link_to 'とっぷ','/' %></div></div>
-<div><%= link_to 'ログアウト','/signout' %></div>
+
+<div><%= link_to "イベント一覧へ","/user/events" %>
+  <%= link_to "OBOG名簿","/user/obog" %>
+  <%= link_to "トップへ戻る","/" %>
+  <%= link_to "ログアウト","/signout" %></div>
+  </body>
+</html>

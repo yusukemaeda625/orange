@@ -7,10 +7,11 @@
 <div class="container">
 <div class="card-header"><%= @user.schoolname %>高校の名簿</div>
 
-<% @users.each do |user| %>
+
 <table class="table table-striped">
 	
 	<thead><tr><th>名前</th><th>卒業年度</th><th>属性</th><th>プロフィール</th><th>連絡先</th></tr></thead>
+	<% @users.each do |user| %>
 	<tbody><tr>
 	<td><%= user.name %></td>
 	<td><%= user.guraduate %></td>
@@ -27,10 +28,11 @@
 		<%= user.phone %>
 	</td>
 	</td></tr><br>
+	<% end %>
 </table>
 	
 	
-<% end %>
+
 <div>
 	<%= link_to 'トップ画面へ','/' %>
 	<%= link_to 'ログアウト','/signout' %>
