@@ -1,16 +1,51 @@
-﻿<div>編集する</div>
-<%= form_tag "/user/edit/profile", method: :post do %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Orange</title>
+    <meta name="csrf-param" content="authenticity_token" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="csrf-token" content="psRA+qxcHo9n+OI3jdj5FxTQKa4zBdCYkkhBmxJsRahezb/hnea7cisI158go1tdbEURHG1lnkHpcysaof1D2Q==" />
+
+<link rel="stylesheet" href="../bootstrap-4.2.1-dist/css/bootstrap.css">
+    <link rel="stylesheet" media="all" href="/assets/bootstrap.self-878822eaa204855dc9684acf080e209094e122c202a498ab15c69f9e19ff46c5.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/jquery.datetimepicker.self-908c70b43aa13956d0cac5aed0ea51f507e28dd5c27eabd7800509bafed4c668.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" data-turbolinks-track="reload" />
+<link rel="stylesheet" media="all" href="/assets/application.self-f0d704deea029cf000697e2c0181ec173a1b474645466ed843eb5ee7bb215794.css?body=1" data-turbolinks-track="reload" />
+    <script src="/assets/rails-ujs.self-8944eaf3f9a2615ce7c830a810ed630e296633063af8bb7441d5702fbe3ea597.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/turbolinks.self-569ee74eaa15c1e2019317ff770b8769b1ec033a0f572a485f64c82ddc8f989e.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/action_cable.self-69fddfcddf4fdef9828648f9330d6ce108b93b82b0b8d3affffc59a114853451.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/cable.self-8484513823f404ed0c0f039f75243bfdede7af7919dda65f2e66391252443ce9.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/jquery-3.3.1.min.self-875821d1e3121b366b94ea86a07f3cbc5c76cb16a319bc62212c03a805ff20e9.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/jquery.datetimepicker.full.min.self-675e43465994badd941e5dc6984d5fabf3efe0c7db77a4f622185b2a5a47021c.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/list.self-81c018dd5ac04871c1f8a537a67efc45a66835fa32e8cc5a1417e84e874db664.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" data-turbolinks-track="reload"></script>
+<script src="/assets/application.self-eba3cb53a585a0960ade5a8cb94253892706bb20e3f12097a13463b1f12a4528.js?body=1" data-turbolinks-track="reload"></script>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">OBOG名簿2.0</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="card-header">プロフィール編集</div><br>
+<%= form_tag "/user/edit/profile", method: :post, :class => "form-horizontal" do %>
 	<%= label_tag "名前" %>
-	<%= text_field_tag :username, @user.name %><br>
+	<%= text_field_tag :username, @user.name, :class => "col-xl control-label" %><br>
 	<%= label_tag "学校名" %>
-	<%= text_field_tag :schoolname, @user.schoolname %><br>
+	<%= text_field_tag :schoolname, @user.schoolname, :class => "col-xl control-label" %><br>
 	<%= label_tag "卒業年度" %>
-	<%= number_field_tag :graduate, @user.guraduate %><br>
+	<%= number_field_tag :graduate, @user.guraduate, :class => "col-xl control-label" %><br>
 	<%= label_tag "emailアドレス" %>
-	<%= text_field_tag :email, @user.email %><br>	
+	<%= text_field_tag :email, @user.email, :class => "col-xl control-label" %><br>	
 	<%= label_tag "電話番号" %>
-	<%= number_field_tag :phone, @user.phone %><br>	
+	<%= number_field_tag :phone, @user.phone, :class => "col-xl control-label" %><br>	
 	<%= label_tag "プロフィール" %>
-	<%= text_area_tag :profile, @user.profile %><br>
-	<%= submit_tag"送信" %>
+	<%= text_area_tag :profile, @user.profile, :class => "col-xl control-label" %><br>
+	<%= submit_tag"送信", :class => "btn btn-primary" %>
 <% end %>
+  </body>
+</html>

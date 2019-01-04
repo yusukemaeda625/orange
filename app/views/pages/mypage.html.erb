@@ -49,7 +49,7 @@
             <td><%= @user.schoolname %></td>
             <td><%= @user.guraduate %></td>
 			<td><%= @user.email %><br><%= @user.phone %></td>
-			<td><% if @user.profile %>プロフィール　<%= @user.profile %><% else %>プロフィールを設定してください<% end %></td>			
+			<td><% if @user.profile %><%= @user.profile %><% else %>プロフィールを設定してください<% end %></td>			
         </tr>
 
 </table>
