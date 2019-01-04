@@ -3351,3 +3351,343 @@ Processing by PagesController#top as HTML
 Completed 200 OK in 251ms (Views: 199.3ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:05:15 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 267ms (Views: 213.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:09:27 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 249ms (Views: 198.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:13:15 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 242ms (Views: 192.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:15:53 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (2.0ms)
+Completed 500 Internal Server Error in 209ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:19: syntax error, unexpected ','
+...ser/signin", method: :post do , class: => "form-horizontal")...
+...                               ^
+C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:19: syntax error, unexpected ')', expecting keyword_end
+... , class: => "form-horizontal");@output_buffer.safe_append='
+...                               ^
+C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:27: syntax error, unexpected keyword_ensure, expecting ')'
+C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:29: syntax error, unexpected keyword_end, expecting ')'):
+  
+app/views/pages/signin.html.erb:19: syntax error, unexpected ','
+app/views/pages/signin.html.erb:19: syntax error, unexpected ')', expecting keyword_end
+app/views/pages/signin.html.erb:27: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/pages/signin.html.erb:29: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:16:06 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 206ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:19: syntax error, unexpected ','
+...ser/signin", method: :post do , class: => "form-horizontal")...
+...                               ^
+C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:19: syntax error, unexpected ')', expecting keyword_end
+... , class: => "form-horizontal");@output_buffer.safe_append='
+...                               ^
+C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:27: syntax error, unexpected keyword_ensure, expecting ')'
+C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:29: syntax error, unexpected keyword_end, expecting ')'):
+  
+app/views/pages/signin.html.erb:19: syntax error, unexpected ','
+app/views/pages/signin.html.erb:19: syntax error, unexpected ')', expecting keyword_end
+app/views/pages/signin.html.erb:27: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/pages/signin.html.erb:29: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:17:54 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 190ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:19: syntax error, unexpected ',', expecting ')'
+...end=  form_tag ("/user/signin", method: => :post , class: =>...
+...                               ^
+C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:19: syntax error, unexpected ')', expecting keyword_end
+... , class: => "form-horizontal") do @output_buffer.safe_appen...
+...                               ^
+C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:27: syntax error, unexpected keyword_ensure, expecting end-of-input):
+  
+app/views/pages/signin.html.erb:19: syntax error, unexpected ',', expecting ')'
+app/views/pages/signin.html.erb:19: syntax error, unexpected ')', expecting keyword_end
+app/views/pages/signin.html.erb:27: syntax error, unexpected keyword_ensure, expecting end-of-input
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:21:36 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (0.0ms)
+Completed 500 Internal Server Error in 199ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:19: syntax error, unexpected ',', expecting ')'
+...end=  form_tag ("/user/signin", method: => :post ) do @outpu...
+...                               ^
+C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:27: syntax error, unexpected keyword_ensure, expecting end-of-input):
+  
+app/views/pages/signin.html.erb:19: syntax error, unexpected ',', expecting ')'
+app/views/pages/signin.html.erb:27: syntax error, unexpected keyword_ensure, expecting end-of-input
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:22:15 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 198ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:19: syntax error, unexpected ',', expecting ')'
+...end=  form_tag ("/user/signin", method: :post ) do @output_b...
+...                               ^
+C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:27: syntax error, unexpected keyword_ensure, expecting end-of-input):
+  
+app/views/pages/signin.html.erb:19: syntax error, unexpected ',', expecting ')'
+app/views/pages/signin.html.erb:27: syntax error, unexpected keyword_ensure, expecting end-of-input
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:22:56 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 196ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:19: syntax error, unexpected ',', expecting ')'
+...end=  form_tag ("/user/signin", :method => :post ) do @outpu...
+...                               ^
+C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:27: syntax error, unexpected keyword_ensure, expecting end-of-input):
+  
+app/views/pages/signin.html.erb:19: syntax error, unexpected ',', expecting ')'
+app/views/pages/signin.html.erb:27: syntax error, unexpected keyword_ensure, expecting end-of-input
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:23:35 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 241ms (Views: 194.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:24:05 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 192ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:17: syntax error, unexpected ':', expecting keyword_end
+...m_tag "/user/signin", :method :post do @output_buffer.safe_a...
+...                               ^):
+  
+app/views/pages/signin.html.erb:17: syntax error, unexpected ':', expecting keyword_end
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:24:23 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 245ms (Views: 196.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:24:37 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 200ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:17: syntax error, unexpected =>
+...gnin", method: :post, class: => "form-horizontal" do @output...
+...                               ^
+C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:17: syntax error, unexpected keyword_do_block, expecting keyword_end
+... class: => "form-horizontal" do @output_buffer.safe_append='
+...                               ^
+C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:25: syntax error, unexpected keyword_ensure, expecting end-of-input):
+  
+app/views/pages/signin.html.erb:17: syntax error, unexpected =>
+app/views/pages/signin.html.erb:17: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/pages/signin.html.erb:25: syntax error, unexpected keyword_ensure, expecting end-of-input
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:24:51 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 244ms (Views: 196.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:27:23 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 242ms (Views: 191.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:27:40 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 235ms (Views: 187.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:27:54 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 246ms (Views: 196.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:28:48 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 237ms (Views: 187.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:38:08 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 255ms (Views: 202.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:38:21 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 247ms (Views: 195.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:40:00 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 240ms (Views: 190.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:40:40 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 187ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (C:/Users/Toria/Documents/orange/app/views/pages/signin.html.erb:23: syntax error, unexpected ':', expecting ')'
+...r.append=( submit_tag"送信" :class => "btn btn-primary" );...
+...                               ^):
+  
+app/views/pages/signin.html.erb:23: syntax error, unexpected ':', expecting ')'
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:41:08 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 226ms (Views: 178.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:41:13 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 229ms (Views: 181.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:42:47 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 231ms (Views: 182.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-04 15:44:18 +0900
+Processing by PagesController#top as HTML
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 245ms (Views: 194.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signup" for 127.0.0.1 at 2019-01-04 15:44:20 +0900
+Processing by PagesController#signup as HTML
+  Rendering pages/signup.html.erb within layouts/application
+  Rendered pages/signup.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 236ms (Views: 185.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signup" for 127.0.0.1 at 2019-01-04 15:48:08 +0900
+Processing by PagesController#signup as HTML
+  Rendering pages/signup.html.erb within layouts/application
+  Rendered pages/signup.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 240ms (Views: 190.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signup" for 127.0.0.1 at 2019-01-04 15:48:58 +0900
+Processing by PagesController#signup as HTML
+  Rendering pages/signup.html.erb within layouts/application
+  Rendered pages/signup.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 245ms (Views: 196.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signup" for 127.0.0.1 at 2019-01-04 15:49:21 +0900
+Processing by PagesController#signup as HTML
+  Rendering pages/signup.html.erb within layouts/application
+  Rendered pages/signup.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 239ms (Views: 188.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signup" for 127.0.0.1 at 2019-01-04 15:51:42 +0900
+Processing by PagesController#signup as HTML
+  Rendering pages/signup.html.erb within layouts/application
+  Rendered pages/signup.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 248ms (Views: 197.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signup" for 127.0.0.1 at 2019-01-04 15:51:53 +0900
+Processing by PagesController#signup as HTML
+  Rendering pages/signup.html.erb within layouts/application
+  Rendered pages/signup.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 234ms (Views: 186.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signup" for 127.0.0.1 at 2019-01-04 15:52:38 +0900
+Processing by PagesController#signup as HTML
+  Rendering pages/signup.html.erb within layouts/application
+  Rendered pages/signup.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 234ms (Views: 184.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signup" for 127.0.0.1 at 2019-01-04 15:52:59 +0900
+Processing by PagesController#signup as HTML
+  Rendering pages/signup.html.erb within layouts/application
+  Rendered pages/signup.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 243ms (Views: 194.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2019-01-04 15:54:11 +0900
+Processing by PagesController#top as HTML
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 259ms (Views: 206.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-04 15:54:13 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 238ms (Views: 188.2ms | ActiveRecord: 0.0ms)
+
+
