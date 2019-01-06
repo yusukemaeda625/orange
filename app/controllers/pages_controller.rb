@@ -98,7 +98,7 @@ class PagesController < ApplicationController
 	
 	def participate
 		event = Event.find(params[:id])
-		exists = Euser.where("name = ? and event_id = ?",session[:id] ,params[:id] )
+		exists = Euser.where("name = ? and event_id = ?","session[:id]" ,"params[:id]" )
 		exist = exists[0];		
 	
 		if !exist
@@ -115,7 +115,7 @@ class PagesController < ApplicationController
 	
 	def participate_cancel
 		event = Event.find(params[:id])
-		exists = Euser.where("name = ? and event_id = ?",session[:id] ,params[:id] )
+		exists = Euser.where("name = ? and event_id = ?","session[:id]" ,"params[:id]" )
 		exist = exists[0];		
 	
 		if exist

@@ -9178,3 +9178,1151 @@ puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
 puma (3.12.0) lib/puma/server.rb:472:in `process_client'
 puma (3.12.0) lib/puma/server.rb:332:in `block in run'
 puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2019-01-06 18:05:43 +0900
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#top as HTML
+  Rendering pages/top.html.erb within layouts/application
+  Rendered pages/top.html.erb within layouts/application (307.2ms)
+Completed 200 OK in 566ms (Views: 541.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/user/signin" for 127.0.0.1 at 2019-01-06 18:05:56 +0900
+Processing by PagesController#signin as HTML
+  Rendering pages/signin.html.erb within layouts/application
+  Rendered pages/signin.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 115ms (Views: 95.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/user/signin" for 127.0.0.1 at 2019-01-06 18:05:57 +0900
+Processing by PagesController#signin_check as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HAX0s2Ixof25iQgTsz0C4MaaXuJgFh/obsexhHl6DHXqkUOdrPd1pv1b2YUkbvamuJRgPDl1L68QPeOXAgBExg==", "username"=>"あるとあああ", "password"=>"[FILTERED]", "commit"=>"送信"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE (name = 'あるとあああ' and password = 'nwvknwvk')[0m
+Redirected to http://localhost:3000/user/mypage
+Completed 302 Found in 39ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/user/mypage" for 127.0.0.1 at 2019-01-06 18:05:57 +0900
+Processing by PagesController#mypage as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (0.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 13]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "13"]]
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  Rendered pages/mypage.html.erb within layouts/application (157.6ms)
+Completed 200 OK in 308ms (Views: 263.1ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/bootstrap-4.2.1-dist/css/bootstrap.css" for 127.0.0.1 at 2019-01-06 18:05:58 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/bootstrap-4.2.1-dist/css/bootstrap.css"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/user/events" for 127.0.0.1 at 2019-01-06 18:06:08 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "生成アルゴリズムｇｔあ"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  Rendered pages/events.html.erb within layouts/application (35.9ms)
+Completed 200 OK in 151ms (Views: 126.0ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/bootstrap-4.2.1-dist/css/bootstrap.css" for 127.0.0.1 at 2019-01-06 18:06:08 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/bootstrap-4.2.1-dist/css/bootstrap.css"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/user/list.js" for 127.0.0.1 at 2019-01-06 18:06:09 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/user/list.js"):
+  
+Started GET "/participate/22" for 127.0.0.1 at 2019-01-06 18:06:11 +0900
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Processing by PagesController#participate as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 13 and event_id = '22')[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "eusers" ("name", "created_at", "updated_at", "event_id") VALUES (?, ?, ?, ?)[0m  [["name", "13"], ["created_at", "2019-01-06 09:06:14.540736"], ["updated_at", "2019-01-06 09:06:14.540736"], ["event_id", 22]]
+  [1m[35m (101.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 2065ms (ActiveRecord: 103.7ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2019-01-06 18:06:15 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "生成アルゴリズムｇｔあ"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEvowner Load (1.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEvowner Load (1.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEattribute Load (0.4ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  Rendered pages/events.html.erb within layouts/application (3347.0ms)
+Completed 200 OK in 5550ms (Views: 4993.1ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/bootstrap-4.2.1-dist/css/bootstrap.css" for 127.0.0.1 at 2019-01-06 18:06:21 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/bootstrap-4.2.1-dist/css/bootstrap.css"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/participate/list.js" for 127.0.0.1 at 2019-01-06 18:06:22 +0900
+Processing by PagesController#participate as JS
+  Parameters: {"id"=>"list"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=list):
+  
+app/controllers/pages_controller.rb:100:in `participate'
+Started GET "/participate/23" for 127.0.0.1 at 2019-01-06 18:06:40 +0900
+Processing by PagesController#participate as HTML
+  Parameters: {"id"=>"23"}
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 13 and event_id = '23')[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "eusers" ("name", "created_at", "updated_at", "event_id") VALUES (?, ?, ?, ?)[0m  [["name", "13"], ["created_at", "2019-01-06 09:06:40.361957"], ["updated_at", "2019-01-06 09:06:40.361957"], ["event_id", 23]]
+  [1m[35m (100.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 106ms (ActiveRecord: 103.7ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2019-01-06 18:06:40 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "生成アルゴリズムｇｔあ"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEvowner Load (1.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  Rendered pages/events.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 126ms (Views: 104.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/bootstrap-4.2.1-dist/css/bootstrap.css" for 127.0.0.1 at 2019-01-06 18:06:40 +0900
+  
+Started GET "/participate/list.js" for 127.0.0.1 at 2019-01-06 18:06:40 +0900
+ActionController::RoutingError (No route matches [GET] "/bootstrap-4.2.1-dist/css/bootstrap.css"):
+Processing by PagesController#participate as JS
+  
+  Parameters: {"id"=>"list"}
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 7ms (ActiveRecord: 1.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=list):
+  
+app/controllers/pages_controller.rb:100:in `participate'
+Started GET "/participate/24" for 127.0.0.1 at 2019-01-06 18:06:43 +0900
+Processing by PagesController#participate as HTML
+  Parameters: {"id"=>"24"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 13 and event_id = '24')[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "eusers" ("name", "created_at", "updated_at", "event_id") VALUES (?, ?, ?, ?)[0m  [["name", "13"], ["created_at", "2019-01-06 09:06:46.620986"], ["updated_at", "2019-01-06 09:06:46.620986"], ["event_id", 24]]
+  [1m[35m (109.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 2064ms (ActiveRecord: 111.7ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2019-01-06 18:06:47 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "生成アルゴリズムｇｔあ"]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[36mEvowner Load (1.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  Rendered pages/events.html.erb within layouts/application (2524.1ms)
+Completed 200 OK in 5008ms (Views: 3943.0ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/bootstrap-4.2.1-dist/css/bootstrap.css" for 127.0.0.1 at 2019-01-06 18:06:53 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/bootstrap-4.2.1-dist/css/bootstrap.css"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/participate/list.js" for 127.0.0.1 at 2019-01-06 18:06:54 +0900
+Processing by PagesController#participate as JS
+  Parameters: {"id"=>"list"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 1015ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=list):
+Started GET "/user/mypage" for 127.0.0.1 at 2019-01-06 18:06:57 +0900
+  
+Processing by PagesController#mypage as HTML
+app/controllers/pages_controller.rb:100:in `participate'
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/mypage.html.erb within layouts/application
+  [1m[36mUattribute Load (1.0ms)[0m  [1m[34mSELECT "uattributes".* FROM "uattributes" WHERE "uattributes"."user_id" = ?[0m  [["user_id", 13]]
+  [1m[36mAttribute Load (0.0ms)[0m  [1m[34mSELECT "attributes".* FROM "attributes"[0m
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE "eusers"."name" = ?[0m  [["name", "13"]]
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  Rendered pages/mypage.html.erb within layouts/application (68.8ms)
+Completed 200 OK in 1666ms (Views: 1130.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/bootstrap-4.2.1-dist/css/bootstrap.css" for 127.0.0.1 at 2019-01-06 18:07:00 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/bootstrap-4.2.1-dist/css/bootstrap.css"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/bootstrap-4.2.1-dist/css/bootstrap.css" for 127.0.0.1 at 2019-01-06 18:12:02 +0900
+  
+Started GET "/user/events" for 127.0.0.1 at 2019-01-06 18:12:02 +0900
+Started GET "/user/list.js" for 127.0.0.1 at 2019-01-06 18:12:02 +0900
+ActionController::RoutingError (No route matches [GET] "/bootstrap-4.2.1-dist/css/bootstrap.css"):
+Processing by PagesController#events as HTML
+  
+  
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+ActionController::RoutingError (No route matches [GET] "/user/list.js"):
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  
+  Rendering pages/events.html.erb within layouts/application
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "生成アルゴリズムｇｔあ"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  Rendered pages/events.html.erb within layouts/application (3334.4ms)
+Started GET "/participate_cancel/23" for 127.0.0.1 at 2019-01-06 18:12:14 +0900
+Completed 200 OK in 12697ms (Views: 12674.8ms | ActiveRecord: 2.0ms)
+
+
+Processing by PagesController#participate_cancel as HTML
+  Parameters: {"id"=>"23"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 13 and event_id = '23')[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[31mDELETE FROM "eusers" WHERE "eusers"."id" = ?[0m  [["id", 7]]
+  [1m[35m (71.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 78ms (ActiveRecord: 74.8ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2019-01-06 18:12:15 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "生成アルゴリズムｇｔあ"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  Rendered pages/events.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 144ms (Views: 120.4ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/participate_cancel/list.js" for 127.0.0.1 at 2019-01-06 18:12:15 +0900
+Started GET "/bootstrap-4.2.1-dist/css/bootstrap.css" for 127.0.0.1 at 2019-01-06 18:12:15 +0900
+Processing by PagesController#participate_cancel as JS
+  
+  Parameters: {"id"=>"list"}
+ActionController::RoutingError (No route matches [GET] "/bootstrap-4.2.1-dist/css/bootstrap.css"):
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  
+Completed 404 Not Found in 2ms (ActiveRecord: 0.0ms)
+
+
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=list):
+  
+app/controllers/pages_controller.rb:117:in `participate_cancel'
+Started GET "/user/events" for 127.0.0.1 at 2019-01-06 18:22:22 +0900
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "生成アルゴリズムｇｔあ"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  Rendered pages/events.html.erb within layouts/application (98.9ms)
+Completed 200 OK in 484ms (Views: 414.3ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/bootstrap-4.2.1-dist/css/bootstrap.css" for 127.0.0.1 at 2019-01-06 18:22:32 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/bootstrap-4.2.1-dist/css/bootstrap.css"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/user/list.js" for 127.0.0.1 at 2019-01-06 18:22:33 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/user/list.js"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/participate_cancel/22" for 127.0.0.1 at 2019-01-06 18:22:51 +0900
+Processing by PagesController#participate_cancel as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 'session[:id]' and event_id = 'params[:id]')[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 5ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2019-01-06 18:22:51 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "生成アルゴリズムｇｔあ"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  Rendered pages/events.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 140ms (Views: 119.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/bootstrap-4.2.1-dist/css/bootstrap.css" for 127.0.0.1 at 2019-01-06 18:22:51 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/bootstrap-4.2.1-dist/css/bootstrap.css"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/participate_cancel/list.js" for 127.0.0.1 at 2019-01-06 18:22:51 +0900
+Processing by PagesController#participate_cancel as JS
+  Parameters: {"id"=>"list"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 1009ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=list):
+  
+app/controllers/pages_controller.rb:117:in `participate_cancel'
+Started GET "/participate_cancel/22" for 127.0.0.1 at 2019-01-06 18:22:56 +0900
+Processing by PagesController#participate_cancel as HTML
+  Parameters: {"id"=>"22"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 'session[:id]' and event_id = 'params[:id]')[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 525ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2019-01-06 18:22:57 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "生成アルゴリズムｇｔあ"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEvowner Load (1.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  Rendered pages/events.html.erb within layouts/application (3542.4ms)
+Completed 200 OK in 6070ms (Views: 6047.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/bootstrap-4.2.1-dist/css/bootstrap.css" for 127.0.0.1 at 2019-01-06 18:23:03 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/bootstrap-4.2.1-dist/css/bootstrap.css"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/participate_cancel/20" for 127.0.0.1 at 2019-01-06 18:23:04 +0900
+Started GET "/participate_cancel/list.js" for 127.0.0.1 at 2019-01-06 18:23:04 +0900
+Processing by PagesController#participate_cancel as HTML
+Processing by PagesController#participate_cancel as JS
+  Parameters: {"id"=>"20"}
+  Parameters: {"id"=>"list"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mEuser Load (1.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 'session[:id]' and event_id = 'params[:id]')[0m
+Completed 404 Not Found in 438ms (ActiveRecord: 0.0ms)
+
+
+Redirected to http://localhost:3000/user/events
+  
+Completed 302 Found in 1822ms (ActiveRecord: 1.0ms)
+
+
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=list):
+  
+Started GET "/user/events" for 127.0.0.1 at 2019-01-06 18:23:09 +0900
+app/controllers/pages_controller.rb:117:in `participate_cancel'
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "生成アルゴリズムｇｔあ"]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[36mEvowner Load (1.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  Rendered pages/events.html.erb within layouts/application (29.9ms)
+Completed 200 OK in 163ms (Views: 134.6ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/bootstrap-4.2.1-dist/css/bootstrap.css" for 127.0.0.1 at 2019-01-06 18:23:11 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/bootstrap-4.2.1-dist/css/bootstrap.css"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/participate_cancel/20" for 127.0.0.1 at 2019-01-06 18:23:15 +0900
+Processing by PagesController#participate_cancel as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 'session[:id]' and event_id = 'params[:id]')[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 46ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2019-01-06 18:23:16 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "生成アルゴリズムｇｔあ"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[36mEvowner Load (1.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  Rendered pages/events.html.erb within layouts/application (3307.4ms)
+Completed 200 OK in 5472ms (Views: 4905.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/participate_cancel/list.js" for 127.0.0.1 at 2019-01-06 18:23:23 +0900
+Processing by PagesController#participate_cancel as JS
+Started GET "/bootstrap-4.2.1-dist/css/bootstrap.css" for 127.0.0.1 at 2019-01-06 18:23:23 +0900
+  Parameters: {"id"=>"list"}
+  
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+ActionController::RoutingError (No route matches [GET] "/bootstrap-4.2.1-dist/css/bootstrap.css"):
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=list):
+  
+app/controllers/pages_controller.rb:117:in `participate_cancel'
+Started GET "/participate/20" for 127.0.0.1 at 2019-01-06 18:23:27 +0900
+Processing by PagesController#participate as HTML
+  Parameters: {"id"=>"20"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 'session[:id]' and event_id = 'params[:id]')[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "eusers" ("name", "created_at", "updated_at", "event_id") VALUES (?, ?, ?, ?)[0m  [["name", "13"], ["created_at", "2019-01-06 09:23:29.567771"], ["updated_at", "2019-01-06 09:23:29.567771"], ["event_id", 20]]
+  [1m[35m (89.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/user/events
+Completed 302 Found in 1557ms (ActiveRecord: 90.7ms)
+
+
+Started GET "/user/events" for 127.0.0.1 at 2019-01-06 18:23:30 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "生成アルゴリズムｇｔあ"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEvowner Load (1.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEattribute Load (1.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEvowner Load (1.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  Rendered pages/events.html.erb within layouts/application (2453.8ms)
+Completed 200 OK in 4946ms (Views: 3892.1ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/bootstrap-4.2.1-dist/css/bootstrap.css" for 127.0.0.1 at 2019-01-06 18:23:35 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/bootstrap-4.2.1-dist/css/bootstrap.css"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/participate/list.js" for 127.0.0.1 at 2019-01-06 18:23:36 +0900
+Processing by PagesController#participate as JS
+  Parameters: {"id"=>"list"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 498ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=list):
+  
+Started GET "/participate_cancel/20" for 127.0.0.1 at 2019-01-06 18:23:39 +0900
+Started GET "/participate_cancel/list.js" for 127.0.0.1 at 2019-01-06 18:23:40 +0900
+app/controllers/pages_controller.rb:100:in `participate'
+Processing by PagesController#participate_cancel as HTML
+Processing by PagesController#participate_cancel as JS
+  Parameters: {"id"=>"20"}
+  Parameters: {"id"=>"list"}
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mEvent Load (1.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  [1m[36mEuser Load (0.0ms)[0m  [1m[34mSELECT "eusers".* FROM "eusers" WHERE (name = 'session[:id]' and event_id = 'params[:id]')[0m
+Completed 404 Not Found in 487ms (ActiveRecord: 1.0ms)
+
+
+Redirected to http://localhost:3000/user/events
+  
+Completed 302 Found in 965ms (ActiveRecord: 0.0ms)
+
+
+ActiveRecord::RecordNotFound (Couldn't find Event with 'id'=list):
+  
+app/controllers/pages_controller.rb:117:in `participate_cancel'
+Started GET "/user/events" for 127.0.0.1 at 2019-01-06 18:23:42 +0900
+Processing by PagesController#events as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  Rendering pages/events.html.erb within layouts/application
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."schoolname" = ?[0m  [["schoolname", "生成アルゴリズムｇｔあ"]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 20]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 22]]
+  [1m[36mEattribute Load (1.1ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 23]]
+  [1m[36mEattribute Load (0.0ms)[0m  [1m[34mSELECT "eattributes".* FROM "eattributes" WHERE "eattributes"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[36mEvowner Load (0.0ms)[0m  [1m[34mSELECT "evowners".* FROM "evowners" WHERE "evowners"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "eusers" WHERE "eusers"."event_id" = ?[0m  [["event_id", 24]]
+  Rendered pages/events.html.erb within layouts/application (49.0ms)
+Completed 200 OK in 3328ms (Views: 3298.0ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/bootstrap-4.2.1-dist/css/bootstrap.css" for 127.0.0.1 at 2019-01-06 18:23:47 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/bootstrap-4.2.1-dist/css/bootstrap.css"):
+  
+actionpack (5.1.6.1) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.6) lib/rack/method_override.rb:22:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6.1) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6.1) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6.1) lib/rails/engine.rb:522:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
