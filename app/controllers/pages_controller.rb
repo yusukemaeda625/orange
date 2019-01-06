@@ -104,7 +104,7 @@ class PagesController < ApplicationController
 		if !exist
 		
 		euser = Euser.new
-		euser.name = session[:id]
+		euser.name = "#{session[:id]}"
 		euser.event = event
 		euser.save
 		
